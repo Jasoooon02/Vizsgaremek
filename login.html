@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="bejstyle.css">
+  <title>Bejelentkezés</title>
+  
+  <script>
+    function saveLoginData() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+    
+      var data = {
+        username: username,
+        password: password
+      };
+
+      
+      var jsonData = JSON.stringify(data);
+
+   
+      var blob = new Blob([jsonData], {type: 'application/json'});
+
+
+      var downloadLink = document.createElement('a');
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.download = 'loginData.json';
+      downloadLink.click();
+    }
+    
+  </script>
+</head>
+<body>
+  <input type="checkbox" id="ham-menu">
+  <label for="ham-menu">
+    <div class="hide-des">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </div>
+  
+  </label>
+  <div class="full-page-green"></div>
+  <div class="ham-menu">
+    <ul class="centre-text bold-text">
+      <li><a href="login.html">Bejelentkezés</a></li>
+      <li><a href="index.html">Kezdőlap</a></li>
+    </ul>
+  </div>
+  <div class="login-box">
+ 
+    <form>
+      <div class="user-box">
+        <input type="text" id="username" name="username" placeholder="Felhasználónév" required>
+        
+      </div>
+      <div class="user-box">
+        <input type="password" id="password" name="password" placeholder="Jelszó" required>
+        
+      </div>
+        <button type="submit" onclick="saveLoginData()" class="button">Bejelentkezés</button>
+    </form>
+  </div>
+  
+
+</body>
+
+<div class="gearbox">
+  <div class="overlay"></div>
+    <div class="gear one">
+      <div class="gear-inner">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="gear two">
+      <div class="gear-inner">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="gear three">
+      <div class="gear-inner">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="gear four large">
+      <div class="gear-inner">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleTheme() {
+      var body = document.body;
+      body.classList.toggle("dark-theme");
+    }
+    
+  </script>
+  
+
+
+
+
+
+
+
+</html>
