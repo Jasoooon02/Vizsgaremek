@@ -56,7 +56,7 @@ button {
   width: 130px;
   height: 35px;
   border-radius: 30px;
-  background-color: white;
+  background-color: rgba(52, 74, 57, 0.86);
   border: 1px #3a5ba2 solid;
   overflow: hidden;
   
@@ -98,6 +98,7 @@ button:active {
 .sz{
     font-size: 30px;
     margin: auto;
+    text-align: center;
 }
 
 
@@ -106,7 +107,7 @@ button:active {
 
 
 :root {
-        --home-bg-color: #f2f3ee;
+        --home-bg-color: rgba(52, 74, 57, 0.86);
         --menu-bg-color: #cbcbc2;
         --silde-btn-border: #808080;
         --slide-btn-bg: #ddf2db;
@@ -265,7 +266,7 @@ button:active {
 
       
       a {
-        font-size:50px;
+        font-size:40px;
         line-height: 1.5em;
         word-spacing: 0.5em;
         letter-spacing: 0.1em;
@@ -278,3 +279,10 @@ button:active {
       .centre-text {
         text-align: center;
       }
+      @media only screen and (max-width: 640px) {
+        a {
+          font-size:20px;
+        }
+      }
+ 
+ 
