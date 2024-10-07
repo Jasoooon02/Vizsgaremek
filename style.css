@@ -1,7 +1,3 @@
-.jobbra{
-  float: right;
-}
-
 
 .text1 {
   font-size: 15px;
@@ -285,4 +281,7 @@ button:active {
         }
       }
  
- 
+ footer{
+   position:fixed;
+   bottom: 0;
+ }
