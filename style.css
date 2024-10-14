@@ -330,8 +330,8 @@ button:active {
   color: rgba(52, 74, 57, 0.86);
 }
 .kat{
-  margin-top: -155px;
-  margin-left: 40px;
+  margin-top: -190px;
+  margin-left: 200px;
   font-size: 25px;
   font-weight: bold;
   color: rgba(52, 74, 57, 0.86);
@@ -346,4 +346,281 @@ button:active {
   font-style: italic;
   font-weight: bold;
   
+}
+.cars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.car-item {
+  text-align: center;
+  margin: 10px;
+  flex: 1 1 300px; 
+}
+
+.car-item img {
+  width: 100%;
+  max-width: 350px; 
+  height: 250px; 
+}
+
+
+@media only screen and (max-width: 640px) {
+  .cars {
+    margin-top: 200px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .car-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .sz{
+    font-size: 50px;
+  }
+  body{
+    width:auto;
+  }
+  .category-menu{
+    margin-left: 20px;
+  }
+  .kat{
+    margin-left: 20px;
+  }
+  .team-container {
+    flex-direction:column;
+  }
+
+}
+@media only screen and (min-width: 641px) and (max-width: 1007px) {
+  .cars {
+    margin-top: 200px;
+    align-items: center;
+  }
+
+  .car-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .sz{
+    font-size: 80px;
+  }
+  .category-menu{
+    margin-left: 20px;
+  }
+  .kat{
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 1008px) and (max-width:1200px) {
+  .cars {
+    align-items: center;
+    width: 800px;
+  }
+
+  .car-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .cars{
+    margin-top: -160px;
+    margin-left: 200px;
+  }
+  
+  .kat{
+    margin-top: -250px;
+    margin-left: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(52, 74, 57, 0.86);
+  }
+  .category-menu {
+    list-style-type: none;
+    margin-left: 50px;
+    margin-top: 240px;
+    color: rgb(58, 56, 56);
+    font-size: 20px;
+    font-weight: bold;
+    
+  }
+}
+
+@media only screen and (min-width:1200px)and (max-width:1400px) {
+  .cars {
+    align-items: center;
+    width: 800px;
+  }
+
+  .car-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .cars{
+    margin-top: -160px;
+    margin-left: 300px;
+  }
+  
+  .kat{
+    margin-top: -250px;
+    margin-left: 150px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(52, 74, 57, 0.86);
+  }
+  .category-menu {
+    list-style-type: none;
+    margin-left: 150px;
+    margin-top: 240px;
+    color: rgb(58, 56, 56);
+    font-size: 20px;
+    font-weight: bold;
+    
+  }
+}
+@media only screen and (min-width:1400px)and (max-width:1750px){
+  .cars {
+    align-items: center;
+    width: 800px;
+  }
+
+  .car-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .cars{
+    margin-top: -160px;
+    margin-left: 450px;
+  }
+  
+  .kat{
+    margin-top: -250px;
+    margin-left: 150px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(52, 74, 57, 0.86);
+  }
+  .category-menu {
+    list-style-type: none;
+    margin-left: 150px;
+    margin-top: 240px;
+    color: rgb(58, 56, 56);
+    font-size: 20px;
+    font-weight: bold;
+    
+  }
+}
+.team-section {
+  text-align: center;
+  padding: 50px ;
+  margin-top: 80px;
+  flex-direction: column;
+}
+
+.team-section h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 30px;
+  margin-bottom: 40px;
+  font-style: italic;
+  color: #666;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  
+}
+
+.team-member {
+  background-color:  rgba(52, 74, 57, 0.86);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  
+}
+
+.team-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 25px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+.position {
+  font-size: 20px;
+  color: #fffefe;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 10px;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 1750px) {
+  .frame {
+  border-style:groove;
+  border-color: #3a523c;
+  background-color: #3a523c;
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-top: 40px;
+  border-radius: 65px;
+  min-height:550px;
+}
+.cars {
+  align-items: center;
+  width: 800px;
+}
+
+.car-item {
+  width: 100%;
+  margin: 10px 0;
+}
+.cars{
+  margin-top: -160px;
+  margin-left: 550px;
+}
+
+.kat{
+  margin-top: -210px;
+  margin-left: 250px;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 0.86);
+}
+.category-menu {
+  list-style-type: none;
+  margin-left: 250px;
+  margin-top: 240px;
+  color: rgb(58, 56, 56);
+  font-size: 20px;
+  font-weight: bold;
+}
 }
