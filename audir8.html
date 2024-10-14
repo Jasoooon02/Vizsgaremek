@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="car.css">
     <title>DemonCars</title>
 
 </head>
@@ -30,73 +30,50 @@
     </ul>
   </div>
 
-<div class="frame">
-<div class="category">
 
-    <ul class="category-menu">
-        <li data-category="all">Minden termék</li>
-        <li data-category="sport">Sportautók</li>
-        <li data-category="super">Szuperautók</li>
-        <li data-category="muscle">Izomautók</li>
-        <li data-category="street">Utcai autók</li>
-    </ul>
-</div>
-<p class="kat"> Kategóriák</p>
-<div class="cars">
-    <div class="car-item" data-category="street">
-         <a href="golf.html">
-        <img  src="golf-mk4.jpg" alt="Golf MK4"></a>
-        <p class="name">Golf MK4</p>
-        <p class="price">1 895 000 Ft-tól</p>
+  <div class="container">
+    <div class="car-image">
+        <img src="audi-r8.jpg" alt="Golf MK4">
     </div>
-    <div class="car-item" data-category="sport">
-        <a href="audir8.html">
-        <img src="audi-r8.jpg" alt="Audi R8" ></a>
-        <p class="name">Audi R8</p>
-        <p class="price">10 890 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="super">
-        <a href="bugattic.html">
-        <img src="bugatti-chiron.jpg" alt="Bugatti Chiron"></a>
-        <p class="name">Bugatti Chiron</p>
-        <p class="price">20 290 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="muscle">
-        <a href="dodgech.html">
-        <img src="dodge-charger.jpg" alt="Dodge Charger"></a>
-        <p class="name">Dodge Charger</p>
-        <p class="price">5 980 000 Ft-tól</p>
-    </div>
-</div>
-</div>
-
-<section class="team-section">
-    <h1>Egy összetartó csapat vagyunk</h1>
-    <p class="subtitle">Egy menő csapat, rengeteg energiával!</p>
-
-    <div class="team-container">
-        <div class="team-member">
-            <img src="jani.jpg" alt="Kelemen János" class="team-photo">
-            <h3>Kelemen János</h3>
-            <p class="position">Ceo</p>
-            <p class="description">Kattints ide, és kezdheted is az írást. Quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem.</p>
+    <div class="car-details">
+        <h1>Golf MK4</h1>
+        <div class="description">
+        <p>
+            A Volkswagen Golf Mk4 egy kompakt autó, amelyet a praktikum és a megbízhatóság jellemez.
+            A 1997-től gyártott modell letisztult dizájnnal és kényelmes, tágas belső térrel rendelkezik.
+            Többféle motorváltozattal elérhető, beleértve a gazdaságos dízel és a sportosabb benzines opciókat is.
+            Az Mk4 kiemelkedő volt a minőségi anyaghasználat és a biztonsági felszereltség terén, így a kor egyik népszerű választása lett.
+        </p>
         </div>
-
-        <div class="team-member">
-            <img src="balazs.jpg" alt="Gáspár Balázs" class="team-photo">
-            <h3>Gáspár Balázs</h3>
-            <p class="position">Ceo</p>
-            <p class="description">Kattints ide, és kezdheted is az írást. Voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur.</p>
+        <div class="options">
+         
+            <div class="dropdowns">
+                <div class="dropdown">
+                    <p>Szin</p>
+                    <select id="color">
+                        <option>Fehér</option>
+                        <option>Fekete</option>
+                        <option>Piros</option>
+                        <option>Kék</option>
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <p>Motor</p>
+                    <select id="engine">
+                        <option>Dízel</option>
+                        <option>Benzin</option>
+                    </select>
+                </div>
+            </div>
         </div>
-
-        <div class="team-member">
-            <img src="bence.jpg" alt="Kollár Bence" class="team-photo">
-            <h3>Kollár Bence</h3>
-            <p class="position">Ceo</p>
-            <p class="description">Kattints ide, és kezdheted is az írást. Quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.</p>
+        <div class="price">
+            <p>1 895 000 Ft-tól</p>
+            <button>Kosárba</button>
         </div>
     </div>
-</section>
+</div>
+
+
 <script>const cars = document.querySelectorAll('.car-item');
   const categoryLinks = document.querySelectorAll('.category-menu li');
   
@@ -132,4 +109,3 @@
 
 </body>
 </html>
-
