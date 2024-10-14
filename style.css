@@ -91,10 +91,16 @@ button:hover .text2 {
 button:active {
   transform: scale(1.03);
 }
+@font-face {
+  font-family: 'Raptor';
+  src: url('path/to/your/font/file.ttf'); 
+}
 .sz{
-    font-size: 30px;
+    font-size: 100px;
     margin: auto;
     text-align: center;
+    color: #86a58d;
+    font-family: Raptor;
 }
 
 
@@ -137,7 +143,8 @@ button:active {
         color: var(--text-color);
         font-weight: normal;
         font-family: sans-serif;
-        background-color: var(--home-bg-color);
+        background-color: #86a58d;
+       
       }
       
       #ham-menu {
@@ -280,8 +287,63 @@ button:active {
           font-size:20px;
         }
       }
- 
+
+ header{
+  height: 85px;
+  background-color: var(--home-bg-color);
+ }
  footer{
    position:fixed;
    bottom: 0;
  }
+ .cars{
+  margin-left:400px;
+ }
+ .car-item {
+  display: none;
+  text-align: center;
+  margin: 10px;
+}
+.car-item img {
+  width: 350px;
+  height: 250px;
+  
+}
+.car-item.active {
+  display: inline-block;
+}
+.category-menu {
+  list-style-type: none;
+  margin-left: 200px;
+  margin-top: 120px;
+  color: rgb(58, 56, 56);
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+.category-menu li {
+  cursor: pointer;
+  margin-bottom: 5px;
+  
+}
+.category-menu li:hover {
+  color: rgba(52, 74, 57, 0.86);
+}
+.kat{
+  margin-top: -155px;
+  margin-left: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgba(52, 74, 57, 0.86);
+}
+.name{
+  font-size: 15px;
+  font-style: italic;
+  font-weight: bold;
+}
+.price{
+  font-size: 15px;
+  font-style: italic;
+  font-weight: bold;
+  
+}

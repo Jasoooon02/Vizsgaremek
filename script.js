@@ -20,3 +20,4 @@ function saveLoginData() {
   downloadLink.download = 'loginData.json';
   downloadLink.click();
 }
+

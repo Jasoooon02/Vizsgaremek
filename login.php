@@ -12,3 +12,4 @@ if ($conn->connect_error) {
 //$sql="INSERT INTO users (id,username,password) VALUES ()";
 echo "Sikeresen kapcsolódott az adatbázishoz.";
 ?>
+
