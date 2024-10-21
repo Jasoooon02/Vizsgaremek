@@ -434,3 +434,19 @@ body{
         animation-duration: 1.5s;
       }
       
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+      }
+  
+      .button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      
+      
+      .user-box {
+        margin-bottom: 15px;
+      }

@@ -13,6 +13,7 @@
     <p class="sz">DemonCars</p>
     <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
 </header>
+
 <input type="checkbox" id="ham-menu">
 <label for="ham-menu">
     <div class="hide-des">
@@ -27,7 +28,6 @@
 <div class="full-page-green"></div>
 <div class="ham-menu">
     <ul class="centre-text bold-text">
-        <li><a href="login.html">Bejelentkezés</a></li>
         <li><a href="index.html">Kezdőlap</a></li>
     </ul>
 </div>
@@ -82,7 +82,11 @@
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
-
+<script>
+    document.getElementById('checkout-btn').addEventListener('click', function() {
+        window.location.href = 'checkout.html';
+    });
+</script>
 <script src="bugatti.js"></script>
 </body>
 </html>

@@ -13,6 +13,24 @@
     <p class="sz">DemonCars</p>
     <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
 </header>
+<input type="checkbox" id="ham-menu">
+  <label for="ham-menu">
+    <div class="hide-des">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </div>
+  </label>
+  <div class="full-page-green"></div>
+  <div class="ham-menu">
+    <ul class="centre-text bold-text">
+      <li><a href="index.html">Kezdőlap</a></li>
+    </ul>
+  </div>
+
 <div class="container" id="golf-page">
     <div class="car-image">
         <img src="golf-mk4.jpg" alt="Golf MK4" id="car-image">
@@ -63,6 +81,13 @@
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
+
+
+<script>
+    document.getElementById('checkout-btn').addEventListener('click', function() {
+        window.location.href = 'checkout.html';
+    });
+</script>
 
 <script src="cart.js"></script>
 </body>
