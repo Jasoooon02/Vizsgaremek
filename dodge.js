@@ -10,7 +10,7 @@ let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
 window.onload = function() {
     updateCartDisplay();
-    updatePrice(); 
+    updatePrice();
 };
 
 cartBtn.addEventListener('click', () => {
@@ -50,7 +50,8 @@ function updatePrice() {
     const selectedOption = engineSelect.options[engineSelect.selectedIndex];
     const price = selectedOption.getAttribute('data-price');
     
-    priceElement.innerText = price ? `${price.replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Ft` : 'N/A';
+    const formattedPrice = price ? `${price.replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Ft` : 'N/A';
+    priceElement.innerText = formattedPrice;
 }
 
 function updateCartDisplay() {

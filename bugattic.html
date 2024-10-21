@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="car.css">
     <title>DemonCars</title>
-
 </head>
 <body>
 
@@ -15,75 +14,75 @@
     <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
 </header>
 <input type="checkbox" id="ham-menu">
-  <label for="ham-menu">
+<label for="ham-menu">
     <div class="hide-des">
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
     </div>
-  </label>
-  <div class="full-page-green"></div>
-  <div class="ham-menu">
+</label>
+<div class="full-page-green"></div>
+<div class="ham-menu">
     <ul class="centre-text bold-text">
-      <li><a href="login.html">Bejelentkezés</a></li>
-      <li><a href="index.html">Kezdőlap</a></li>
+        <li><a href="login.html">Bejelentkezés</a></li>
+        <li><a href="index.html">Kezdőlap</a></li>
     </ul>
-  </div>
+</div>
 
-
-  <div class="container">
+<div class="container">
     <div class="car-image">
-        <img src="bugatti-chiron.jpg" alt="Golf MK4">
+        <img src="bugatti-chiron.jpg" alt="Bugatti Chiron">
     </div>
     <div class="car-details">
         <h1>Bugatti Chiron</h1>
         <div class="description">
-        <p>A Bugatti Chiron egy ultraluxus sportautó, amelyet extrém teljesítmény és lenyűgöző dizájn jellemez. 
+            <p>A Bugatti Chiron egy ultraluxus sportautó, amelyet extrém teljesítmény és lenyűgöző dizájn jellemez. 
             8.0 literes, négy turbófeltöltős W16-os motorja elképesztő, 1500 lóerőt biztosít, ami lehetővé teszi számára, hogy több mint 400 km/h sebességet érjen el. 
             A precízen kidolgozott belső tér a luxus és a technológia csúcsát képviseli, miközben kivételes vezetési élményt nyújt. 
             A Chiron a világ egyik legdrágább és legexkluzívabb autója, amely a sebesség szerelmeseinek készült.
-        </p>
+            </p>
         </div>
         <div class="options">
-         
             <div class="dropdowns">
                 <div class="dropdown">
-                    <p>Szin</p>
+                    <label for="color">Szín:</label>
                     <select id="color">
-                        <option>Fehér</option>
-                        <option>Fekete</option>
-                        <option>Piros</option>
-                        <option>Kék</option>
+                        <option value="Fehér">Fehér</option>
+                        <option value="Fekete">Fekete</option>
+                        <option value="Piros">Piros</option>
+                        <option value="Kék">Kék</option>
                     </select>
                 </div>
                 <div class="dropdown">
-                    <p>Motor</p>
+                    <label for="engine">Motor:</label>
                     <select id="engine">
-                        <option>Dízel</option>
-                        <option>Benzin</option>
+                        <option value="Benzin" data-price="20290000">Benzin - 20 290 000 Ft</option>
+                        <option value="Dízel" data-price="22000000">Dízel - 22 000 000 Ft</option>
                     </select>
                 </div>
             </div>
         </div>
+        
         <div class="price">
-            <p>1 895 000 Ft-tól</p>
+            <p id="car-price">20 290 000 Ft-tól</p>
             <button id="add-to-cart-btn">Kosárba</button>
         </div>
     </div>
 </div>
+
 <div id="cart-modal" class="cart-modal">
     <div class="modal-content">
         <span class="close-btn">&times;</span>
         <h2>Kosár tartalma</h2>
         <ul id="cart-items"></ul>
+        <div id="total-price" class="total-price"></div>
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
 
-<script src="cart.js"></script>
+<script src="bugatti.js"></script>
 </body>
 </html>
-

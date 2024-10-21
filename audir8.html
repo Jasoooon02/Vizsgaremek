@@ -49,28 +49,28 @@
         </p>
         </div>
         <div class="options">
-         
             <div class="dropdowns">
                 <div class="dropdown">
-                    <p>Szin</p>
+                    <label for="color">Szín:</label>
                     <select id="color">
-                        <option>Fehér</option>
-                        <option>Fekete</option>
-                        <option>Piros</option>
-                        <option>Kék</option>
+                        <option value="Fehér">Fehér</option>
+                        <option value="Fekete">Fekete</option>
+                        <option value="Piros">Piros</option>
+                        <option value="Kék">Kék</option>
                     </select>
                 </div>
                 <div class="dropdown">
-                    <p>Motor</p>
+                    <label for="engine">Motor:</label>
                     <select id="engine">
-                        <option>Dízel</option>
-                        <option>Benzin</option>
+                        <option value="Benzin" data-price="10890000">Benzin - 10 890 000 Ft</option>
+                        <option value="Dízel" data-price="12895000">Dízel - 12 895 000 Ft</option>
                     </select>
                 </div>
             </div>
         </div>
+        
         <div class="price">
-            <p>1 895 000 Ft-tól</p>
+            <p>10 890 000 Ft-tól</p>
             <button id="add-to-cart-btn">Kosárba</button>
         </div>
     </div>
@@ -80,10 +80,12 @@
         <span class="close-btn">&times;</span>
         <h2>Kosár tartalma</h2>
         <ul id="cart-items"></ul>
+        <div id="total-price" class="total-price"></div>
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
 
-<script src="cart.js"></script>
+
+<script src="audi.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ const closeBtn = document.querySelector('.close-btn');
 const addToCartBtn = document.getElementById('add-to-cart-btn');
 const cartItemsList = document.getElementById('cart-items');
 const totalPriceElement = document.getElementById('total-price');
-const priceElement = document.getElementById('car-price');
+const priceElement = document.querySelector('.price p'); 
 
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
@@ -25,7 +25,7 @@ closeBtn.addEventListener('click', () => {
 addToCartBtn.addEventListener('click', () => {
     const carName = document.querySelector('.car-details h1').innerText;
     const carImage = document.querySelector('.car-image img').src;
-    const carPrice = priceElement.innerText.replace(/\D/g, "");
+    const carPrice = priceElement.innerText.replace(/\D/g, ""); 
 
     const color = document.getElementById('color').value;
     const engine = document.getElementById('engine').value;
@@ -50,7 +50,8 @@ function updatePrice() {
     const selectedOption = engineSelect.options[engineSelect.selectedIndex];
     const price = selectedOption.getAttribute('data-price');
     
-    priceElement.innerText = price ? `${price.replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Ft` : 'N/A';
+    const formattedPrice = price ? `${price.replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Ft` : 'N/A';
+    priceElement.innerText = formattedPrice;
 }
 
 function updateCartDisplay() {
