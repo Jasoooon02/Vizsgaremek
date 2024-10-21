@@ -193,6 +193,9 @@
    header{
     height: 85px;
     background-color: var(--home-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
    }
    footer{
      position:fixed;
@@ -232,9 +235,10 @@ p{
     font-size: 20px;
 }
 .options {
-    margin-top: 20px;
+   margin-top: 20px;
    margin: auto;
-   align-items: center;
+   display: flex;
+   justify-content: center;
 }
 
 .options label {
@@ -295,4 +299,112 @@ p{
   font-size:small;
   width: 300px;
 }
+}
+.cart-btn {
+  background-color: #ffcc00;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.cart-modal {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  z-index: 999;
+}
+
+.modal-content {
+  margin:auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%; 
+  max-width: 500px; 
+  max-height: 70vh; 
+  overflow-y: auto; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Árnyék */
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn {
+  color: red;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.close-btn:hover, .close-btn:focus {
+  color: black;
+}
+
+#cart-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#cart-items li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+#checkout-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#checkout-btn:hover {
+  background-color: #218838;
+}
+#cart-items img {
+  width: 100px;
+  margin-right: 10px;
+}
+#cart-items img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+#cart-items button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#cart-items button:hover {
+  background-color: #ff3333;
+}
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
