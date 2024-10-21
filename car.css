@@ -1,97 +1,4 @@
-
-.text1 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-left: 22%;
-  }
-  
-  .text2 {
-    position: absolute;
-    top: 25%;
-    left: -50px;
-    font-weight: 700;
-    font-size: 14px;
-    color: white;
-  }
-  
-  .iconn {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: transform 0.5s;
-  }
-  
-  .iconn::before {
-    position: absolute;
-    left: -100px;
-    top: 0;
-    z-index: -1;
-    content: '';
-    width: 130px;
-    height: 33px;
-    border-radius: 30px;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    ;
-  }
-  
-  button:hover .iconn {
-    transform: translateX(96px);
-    transition: transform 0.5s;
-  }
-  
-  button:hover .text2 {
-    transform: translateX(100px);
-    transition: transform 0.6s;
-  }
-  
-  button:active {
-    transform: scale(1.03);
-  }
-  button {
-    position: relative;
-    width: 130px;
-    height: 35px;
-    border-radius: 30px;
-    background-color: rgba(52, 74, 57, 0.86);
-    border: 1px #3a5ba2 solid;
-    overflow: hidden;
-    
-  }
-  
-  
-  .icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: transform 0.5s;
-  }
-  
-  .icon::before {
-    position: absolute;
-    left: -100px;
-    top: 0;
-    z-index: -1;
-    content: '';
-    width: 130px;
-    height: 33px;
-    border-radius: 30px;
-    background-color: #3a5ba2;
-  }
-  
-  button:hover .icon {
-    transform: translateX(96px);
-    transition: transform 0.5s;
-  }
-  
-  button:hover .text2 {
-    transform: translateX(100px);
-    transition: transform 0.6s;
-  }
-  
-  button:active {
-    transform: scale(1.03);
-  }
-  @font-face {
+ @font-face {
     font-family: 'Raptor';
     src: url('path/to/your/font/file.ttf'); 
   }
@@ -282,11 +189,6 @@
         .centre-text {
           text-align: center;
         }
-        @media only screen and (max-width: 640px) {
-          a {
-            font-size:20px;
-          }
-        }
   
    header{
     height: 85px;
@@ -303,7 +205,7 @@
     margin-top: 50px;
 }
 .description{
-    margin-left: 550px;
+    margin: auto;
     width: 800px;
 }
 
@@ -314,8 +216,7 @@
 }
 
 .car-details {
-    align-items: center;
-    text-align: center;
+    margin: auto;
 }
 
 .car-details h1 {
@@ -324,7 +225,6 @@
 }
 
 .car-details p {
-
     line-height: 1.5;
 }
 
@@ -333,7 +233,8 @@ p{
 }
 .options {
     margin-top: 20px;
-    margin-left: 850px;
+   margin: auto;
+   align-items: center;
 }
 
 .options label {
@@ -381,3 +282,17 @@ p{
     background-color: #444;
 }
 
+@media only screen and (max-width: 640px) {
+  .car-image img {
+    width:350px;
+    height: 250px;  
+    border-radius: 8px;
+}
+.sz{
+  font-size: 50px;
+}
+.description{
+  font-size:small;
+  width: 300px;
+}
+}
