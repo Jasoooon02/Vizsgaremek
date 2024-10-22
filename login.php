@@ -5,10 +5,9 @@ $username = "root";
 $password = ""; 
 $dbname = "user_db"; 
 
-// Kapcsolat létrehozása az adatbázissal
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Ellenőrizzük a kapcsolatot
+
 if ($conn->connect_error) {
     die("Kapcsolódási hiba: " . $conn->connect_error);
 }
@@ -20,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($input_username) || empty($input_password)) {
         echo "Felhasználónév és jelszó szükséges!";
     } else {
-        // Bejelentkezési logika
+        
         $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->bind_param("s", $input_username);
         $stmt->execute();
