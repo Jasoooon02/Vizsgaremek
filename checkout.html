@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="checkout.css">
     <title>Checkout</title>
 </head>
 <body>
-    
+    <header>
+        <p class="sz">DemonCars</p>
+        
+    </header>
+    <input type="checkbox" id="ham-menu">
+<label for="ham-menu">
+    <div class="hide-des">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+    </div>
+</label>
+<div class="full-page-green"></div>
+<div class="ham-menu">
+    <ul class="centre-text bold-text">
+        <li><a href="index.html">Kezdőlap</a></li>
+    </ul>
+</div>
 <div class="order-form">
     <h2>Adatok kitöltése</h2>
     <form action="submit-order.php" method="POST">
@@ -26,7 +47,7 @@
         <select id="payment-method" name="payment-method" required>
             <option value="card">Bankkártya</option>
             <option value="paypal">PayPal</option>
-            <option value="cash-on-delivery">Utánvétel</option>
+            <option value="cash">Készpénzes Fizetés</option>
         </select><br><br>
 
         
