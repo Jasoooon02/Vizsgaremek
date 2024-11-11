@@ -31,9 +31,15 @@
     </ul>
   </div>
 
-<div class="container" id="golf-page">
+<<div class="container" id="golf-page">
     <div class="car-image">
-        <img src="golf-mk4.jpg" alt="Golf MK4" id="car-image">
+        <div class="slide-gallery">
+            <img src="golf_white.jpg" alt="Golf MK4 Fehér" class="car-slide active" data-color="Fehér">
+            <img src="golf_black.jpg" alt="Golf MK4 Fekete" class="car-slide" data-color="Fekete">
+            <img src="golf_red.jpg" alt="Golf MK4 Piros" class="car-slide" data-color="Piros">
+            <img src="golf_blue.jpg" alt="Golf MK4 Kék" class="car-slide" data-color="Kék">
+            <img src="golf-mk4.jpg" alt="Golf MK4 Szürke" class="car-slide" data-color="Szürke">
+        </div>
     </div>
     <div class="car-details">
         <h1 id="car-name">Golf MK4</h1>
@@ -52,6 +58,7 @@
                         <option value="Fekete">Fekete</option>
                         <option value="Piros">Piros</option>
                         <option value="Kék">Kék</option>
+                        <option value="Szürke">Szürke</option>
                     </select>
                 </div>
                 <div class="dropdown">
@@ -90,5 +97,6 @@
 </script>
 
 <script src="cart.js"></script>
+<script src="carslide.js"></script>
 </body>
 </html>
