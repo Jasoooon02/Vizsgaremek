@@ -1,27 +1,24 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cars";
+$conn = new mysqli('localhost', 'root', '', 'cars');
 
+if (isset($_GET['name']) && isset($_GET['engine'])) {
+    $name = $conn->real_escape_string($_GET['name']);
+    $engine = $conn->real_escape_string($_GET['engine']);
+    
+    error_log("Lekérdezés: name=$name, engine=$engine");
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Csatlakozási hiba: " . $conn->connect_error);
+    $sql = "SELECT price FROM cars WHERE name='$name' AND engine='$engine'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        echo $row['price']; 
+    } else {
+        echo "Hiba: Az ár nem található.";
+    }
+} else {
+    echo "Hibás paraméterek.";
 }
 
-$name = $_GET['name'];
-$engine = $_GET['engine'];
 
-$sql = "SELECT price FROM cars WHERE name = ? AND engine = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $name, $engine);
-$stmt->execute();
-$stmt->bind_result($price);
-$stmt->fetch();
-$stmt->close();
 $conn->close();
-
-echo $price;
 ?>
