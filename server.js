@@ -6,9 +6,10 @@ const port = 3000;
 
 // MySQL kapcsolat
 const connection = mysql.createConnection({
-    host: 'localhost:3306',
-    user: 'root',
-    password: 'password',
+    host: 'localhost',
+    port: '3306',
+    user: 'Bence',
+    password: 'ASDasd123',
     database: 'vizsgaremek'
 });
 
@@ -29,3 +30,11 @@ app.get('/api/products/:category', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err.message);
+    } else {
+        console.log('Connected to MySQL database.');
+    }
+});
+
