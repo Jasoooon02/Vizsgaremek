@@ -13,7 +13,6 @@
     <p class="sz">DemonCars</p>
     <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
 </header>
-
 <input type="checkbox" id="ham-menu">
 <label for="ham-menu">
     <div class="hide-des">
@@ -34,15 +33,22 @@
 
 <div class="container">
     <div class="car-image">
-        <img src="bugatti-chiron.jpg" alt="Bugatti Chiron">
+        <div class="slide-gallery">
+            <img src="bugatti_white.jpg" alt="Bugatti Chiron Fehér" class="car-slide active" data-color="Fehér">
+            <img src="bugatti_black.jpg" alt="Bugatti Chiron Fekete" class="car-slide" data-color="Fekete">
+            <img src="bugatti_red.jpeg" alt="Bugatti Chiron Piros" class="car-slide" data-color="Piros">
+            <img src="bugatti-chiron.jpg" alt="Bugatti Chiron Kék" class="car-slide" data-color="Kék">
+            <img src="bugatti_grey.jpg" alt="Bugatti Chiron Szürke" class="car-slide" data-color="Szürke">
+        </div>
     </div>
     <div class="car-details">
-        <h1>Bugatti Chiron</h1>
+        <h1 id="car-name">Bugatti Chiron</h1>
         <div class="description">
-            <p>A Bugatti Chiron egy ultraluxus sportautó, amelyet extrém teljesítmény és lenyűgöző dizájn jellemez. 
-            8.0 literes, négy turbófeltöltős W16-os motorja elképesztő, 1500 lóerőt biztosít, ami lehetővé teszi számára, hogy több mint 400 km/h sebességet érjen el. 
-            A precízen kidolgozott belső tér a luxus és a technológia csúcsát képviseli, miközben kivételes vezetési élményt nyújt. 
-            A Chiron a világ egyik legdrágább és legexkluzívabb autója, amely a sebesség szerelmeseinek készült.
+            <p>
+                A Bugatti Chiron egy ultraluxus sportautó, amelyet extrém teljesítmény és lenyűgöző dizájn jellemez. 
+                8.0 literes, négy turbófeltöltős W16-os motorja elképesztő, 1500 lóerőt biztosít, ami lehetővé teszi számára, hogy több mint 400 km/h sebességet érjen el.
+                A precízen kidolgozott belső tér a luxus és a technológia csúcsát képviseli, miközben kivételes vezetési élményt nyújt. 
+                A Chiron a világ egyik legdrágább és legexkluzívabb autója, amely a sebesség szerelmeseinek készült.
             </p>
         </div>
         <div class="options">
@@ -54,20 +60,21 @@
                         <option value="Fekete">Fekete</option>
                         <option value="Piros">Piros</option>
                         <option value="Kék">Kék</option>
+                        <option value="Szürke">Szürke</option>
                     </select>
                 </div>
                 <div class="dropdown">
                     <label for="engine">Motor:</label>
                     <select id="engine">
-                        <option value="Benzin" data-price="20290000">Benzin - 20 290 000 Ft</option>
-                        <option value="Dízel" data-price="22000000">Dízel - 22 000 000 Ft</option>
+                        <option value="benzin" data-price="20290000">Benzin - 20 290 000 Ft</option>
+                        <option value="dizel" data-price="22000000">Dízel - 22 000 000</option>
                     </select>
                 </div>
             </div>
         </div>
         
         <div class="price">
-            <p id="car-price">20 290 000 Ft-tól</p>
+            <p id="car-price">5 980 000 Ft-tól</p>
             <button id="add-to-cart-btn">Kosárba</button>
         </div>
     </div>
@@ -82,11 +89,28 @@
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
+
+<script>
+    document.getElementById('engine').addEventListener('change', function() {
+        const name = document.getElementById('car-name').textContent;
+        const engine = this.value;
+
+        fetch(`get_price.php?name=${encodeURIComponent(name)}&engine=${encodeURIComponent(engine)}`)
+    .then(response => response.text())
+    .then(price => {
+        document.getElementById('car-price').textContent = price + ' Ft';
+    })
+    .catch(error => console.error('Error:', error));
+
+    });
+</script>
+
 <script>
     document.getElementById('checkout-btn').addEventListener('click', function() {
         window.location.href = 'checkout.html';
     });
 </script>
 <script src="bugatti.js"></script>
+<script src="carslide.js"></script>
 </body>
 </html>

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="car.css">
     <title>DemonCars</title>
-
 </head>
 <body>
 
@@ -15,37 +14,42 @@
     <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
 </header>
 <input type="checkbox" id="ham-menu">
-  <label for="ham-menu">
+<label for="ham-menu">
     <div class="hide-des">
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
     </div>
-  </label>
-  <div class="full-page-green"></div>
-  <div class="ham-menu">
+</label>
+<div class="full-page-green"></div>
+<div class="ham-menu">
     <ul class="centre-text bold-text">
-      <li><a href="index.html">Kezdőlap</a></li>
+        <li><a href="index.html">Kezdőlap</a></li>
     </ul>
-  </div>
+</div>
 
-
-  <div class="container">
+<div class="container">
     <div class="car-image">
-        <img src="audi-r8.jpg" alt="Golf MK4">
+        <div class="slide-gallery">
+            <img src="r8_white.jpeg" alt="Audi R8 Fehér" class="car-slide active" data-color="Fehér">
+            <img src="r8_black.jpg" alt="Audi R8 Fekete" class="car-slide" data-color="Fekete">
+            <img src="r8_red.jpg" alt="Audi R8 Piros" class="car-slide" data-color="Piros">
+            <img src="audi-r8.jpg" alt="Audi R8 Kék" class="car-slide" data-color="Kék">
+            <img src="r8_grey.jpg" alt="Audi R8 Szürke" class="car-slide" data-color="Szürke">
+        </div>
     </div>
     <div class="car-details">
-        <h1>Audi R8</h1>
+        <h1 id="car-name">Audi R8</h1>
         <div class="description">
-        <p>
-            Az Audi R8 egy csúcskategóriás sportautó, amelyet dinamikus teljesítmény és elegáns dizájn jellemez.
-             A középmotoros elrendezésű V10-es motorja lenyűgöző gyorsulást és vezetési élményt biztosít. 
-             Az alumínium és karbon karosszéria könnyű, de erős, ami javítja a teljesítményt és a kezelhetőséget. 
-             Az R8 modern technológiával és luxus belső térrel párosítja a sportos karaktert.
-        </p>
+            <p>
+                Az Audi R8 egy csúcskategóriás sportautó, amelyet dinamikus teljesítmény és elegáns dizájn jellemez. 
+                A középmotoros elrendezésű V10-es motorja lenyűgöző gyorsulást és vezetési élményt biztosít.
+                Az alumínium és karbon karosszéria könnyű, de erős, ami javítja a teljesítményt és a kezelhetőséget. 
+                Az R8 modern technológiával és luxus belső térrel párosítja a sportos karaktert.
+            </p>
         </div>
         <div class="options">
             <div class="dropdowns">
@@ -56,24 +60,26 @@
                         <option value="Fekete">Fekete</option>
                         <option value="Piros">Piros</option>
                         <option value="Kék">Kék</option>
+                        <option value="Szürke">Szürke</option>
                     </select>
                 </div>
                 <div class="dropdown">
                     <label for="engine">Motor:</label>
                     <select id="engine">
-                        <option value="Benzin" data-price="10890000">Benzin - 10 890 000 Ft</option>
-                        <option value="Dízel" data-price="12895000">Dízel - 12 895 000 Ft</option>
+                        <option value="benzin" data-price="10890000">Benzin - 10 890 000 Ft</option>
+                        <option value="dizel" data-price="12895000">Dízel - 12 895 000</option>
                     </select>
                 </div>
             </div>
         </div>
         
         <div class="price">
-            <p>10 890 000 Ft-tól</p>
+            <p id="car-price">5 980 000 Ft-tól</p>
             <button id="add-to-cart-btn">Kosárba</button>
         </div>
     </div>
 </div>
+
 <div id="cart-modal" class="cart-modal">
     <div class="modal-content">
         <span class="close-btn">&times;</span>
@@ -83,12 +89,28 @@
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
+
+<script>
+    document.getElementById('engine').addEventListener('change', function() {
+        const name = document.getElementById('car-name').textContent;
+        const engine = this.value;
+
+        fetch(`get_price.php?name=${encodeURIComponent(name)}&engine=${encodeURIComponent(engine)}`)
+    .then(response => response.text())
+    .then(price => {
+        document.getElementById('car-price').textContent = price + ' Ft';
+    })
+    .catch(error => console.error('Error:', error));
+
+    });
+</script>
+
 <script>
     document.getElementById('checkout-btn').addEventListener('click', function() {
         window.location.href = 'checkout.html';
     });
 </script>
-
 <script src="audi.js"></script>
+<script src="carslide.js"></script>
 </body>
 </html>
