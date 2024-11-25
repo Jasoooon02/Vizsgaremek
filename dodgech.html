@@ -33,10 +33,16 @@
 
 <div class="container">
     <div class="car-image">
-        <img src="dodge-charger.jpg" alt="Dodge Charger">
+        <div class="slide-gallery">
+            <img src="dodge_feher.jpg" alt="Dodge Charger Fehér" class="car-slide active" data-color="Fehér">
+            <img src="dodge_fekete.jpg" alt="Dodge Charger Fekete" class="car-slide" data-color="Fekete">
+            <img src="dodge_piros.jpg" alt="Dodge Charger Piros" class="car-slide" data-color="Piros">
+            <img src="dodge_kek.jpg" alt="Dodge Charger Kék" class="car-slide" data-color="Kék">
+            <img src="dodge-charger.jpg" alt="Dodge Charger Szürke" class="car-slide" data-color="Szürke">
+        </div>
     </div>
     <div class="car-details">
-        <h1>Dodge Charger</h1>
+        <h1 id="car-name">Dodge Charger</h1>
         <div class="description">
             <p>
                A Dodge Charger egy izmos és erőteljes amerikai szedán, amely klasszikus formájával és modern technológiájával vonzza a figyelmet.
@@ -54,13 +60,14 @@
                         <option value="Fekete">Fekete</option>
                         <option value="Piros">Piros</option>
                         <option value="Kék">Kék</option>
+                        <option value="Szürke">Szürke</option>
                     </select>
                 </div>
                 <div class="dropdown">
                     <label for="engine">Motor:</label>
                     <select id="engine">
-                        <option value="Benzin" data-price="5980000">Benzin - 5 980 000 Ft</option>
-                        <option value="Dízel" data-price="6200000">Dízel - 6 200 000 Ft</option>
+                        <option value="benzin" data-price="5980000">Benzin - 5 980 000 Ft</option>
+                        <option value="dizel" data-price="6200000">Dízel - 6 200 000 Ft</option>
                     </select>
                 </div>
             </div>
@@ -82,11 +89,28 @@
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
+
+<script>
+    document.getElementById('engine').addEventListener('change', function() {
+        const name = document.getElementById('car-name').textContent;
+        const engine = this.value;
+
+        fetch(`get_price.php?name=${encodeURIComponent(name)}&engine=${encodeURIComponent(engine)}`)
+    .then(response => response.text())
+    .then(price => {
+        document.getElementById('car-price').textContent = price + ' Ft';
+    })
+    .catch(error => console.error('Error:', error));
+
+    });
+</script>
+
 <script>
     document.getElementById('checkout-btn').addEventListener('click', function() {
         window.location.href = 'checkout.html';
     });
 </script>
 <script src="dodge.js"></script>
+<script src="carslide.js"></script>
 </body>
 </html>
