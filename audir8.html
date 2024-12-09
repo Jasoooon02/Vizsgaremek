@@ -46,7 +46,7 @@
         <div class="description">
             <p>
                 Az Audi R8 egy csúcskategóriás sportautó, amelyet dinamikus teljesítmény és elegáns dizájn jellemez. 
-                A középmotoros elrendezésű V10-es motorja lenyűgöző gyorsulást és vezetési élményt biztosít.
+                A középmotoros elrendezésű V10-es motorja lenyűgöző gyorsulást és vezetési élményt biztosít. 
                 Az alumínium és karbon karosszéria könnyű, de erős, ami javítja a teljesítményt és a kezelhetőséget. 
                 Az R8 modern technológiával és luxus belső térrel párosítja a sportos karaktert.
             </p>
@@ -74,7 +74,7 @@
         </div>
         
         <div class="price">
-            <p id="car-price">5 980 000 Ft-tól</p>
+            <p id="car-price">10 890 000 Ft-tól</p>
             <button id="add-to-cart-btn">Kosárba</button>
         </div>
     </div>
@@ -89,28 +89,7 @@
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
-
-<script>
-    document.getElementById('engine').addEventListener('change', function() {
-        const name = document.getElementById('car-name').textContent;
-        const engine = this.value;
-
-        fetch(`get_price.php?name=${encodeURIComponent(name)}&engine=${encodeURIComponent(engine)}`)
-    .then(response => response.text())
-    .then(price => {
-        document.getElementById('car-price').textContent = price + ' Ft';
-    })
-    .catch(error => console.error('Error:', error));
-
-    });
-</script>
-
-<script>
-    document.getElementById('checkout-btn').addEventListener('click', function() {
-        window.location.href = 'checkout.html';
-    });
-</script>
-<script src="audi.js"></script>
+<script src="cart.js"></script>
 <script src="carslide.js"></script>
 </body>
 </html>
