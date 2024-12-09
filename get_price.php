@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli('localhost', 'root', '', 'cars');
+$conn = new mysqli('localhost', 'root', '', 'carss');
 $conn->set_charset("utf8");
 if (isset($_GET['name']) && isset($_GET['engine'])) {
     $name = $conn->real_escape_string($_GET['name']);
