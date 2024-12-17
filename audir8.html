@@ -89,6 +89,27 @@
         <button id="checkout-btn">Tovább a fizetéshez</button>
     </div>
 </div>
+
+
+<script>
+    document.getElementById('engine').addEventListener('change', function() {
+        const name = document.getElementById('car-name').textContent;
+        const engine = this.value;
+
+        fetch(`get_price.php?name=${encodeURIComponent(name)}&engine=${encodeURIComponent(engine)}`)
+            .then(response => response.text())
+            .then(price => {
+                document.getElementById('car-price').textContent = price + ' Ft';
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
+
+<script>
+    document.getElementById('checkout-btn').addEventListener('click', function() {
+        window.location.href = 'checkout.html';
+    });
+</script>
 <script src="cart.js"></script>
 <script src="carslide.js"></script>
 </body>
