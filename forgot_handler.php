@@ -25,14 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Érvénytelen email cím!";
         exit();
     }
 
     if ($action === "reset_password") {
-        
+
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -41,34 +41,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $otp = rand(100000, 999999);
 
-            
+
             $stmt = $conn->prepare("INSERT INTO password_resets (email, otp, expires_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 15 MINUTE))");
             $stmt->bind_param("si", $email, $otp);
             $stmt->execute();
 
-            
+
             $mail = new PHPMailer(true);
             try {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'kelemenjanos400@gmail.com'; 
+                $mail->Username = 'kelemenjanos400@gmail.com';
                 $mail->Password = 'ngos nthm ppff yuyf';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                
+
                 $mail->setFrom('kelemenjanos400@gmail.com', 'Te Neved');
                 $mail->addAddress($email);
 
-                
+
                 $mail->isHTML(true);
                 $mail->Subject = 'Egyszer használatos kód';
                 $mail->Body = 'Az egyszer használatos kódod: ' . $otp;
 
                 $mail->send();
 
-                
+
                 header("Location: forgot_verify.html?email=$email");
                 exit();
             } catch (Exception $e) {
