@@ -6,7 +6,7 @@ body{
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
+  width: 450px;
   padding: 40px;
   transform: translate(-50%, -50%);
   background: rgba(24, 20, 20, 0.987);
@@ -65,19 +65,10 @@ body{
 }
 
 .login-box a:hover {
-  background: #03f40f;
-  color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #03f40f,
-              0 0 25px #03f40f,
-              0 0 50px #03f40f,
-              0 0 100px #03f40f;
-}
+  
+  color: #1571c7;}
+  
 
-.login-box a span {
-  position: absolute;
-  display: block;
-}
 
 
 
@@ -460,14 +451,14 @@ body{
         z-index: 1000; 
         left: 0; 
         top: 0; 
-        width: 100%; 
+        width: 500px; 
         height: 100%; 
         overflow: auto; 
-        background-color: rgba(0, 0, 0, 0.5);
+        
       }
   
       .modal-content {
-        background-color: #fff;
+        background-color: #000000;
         margin: 15% auto;
         padding: 20px;
         border-radius: 5px;
@@ -487,3 +478,18 @@ body{
         color: black;
       }
       
+
+
+      #forgot-password-link{
+        font-size: 20px;
+        margin-left: -5px;
+      }
+
+
+
+      #elfj{
+        margin-bottom: 15px;
+      }
+
+
+     

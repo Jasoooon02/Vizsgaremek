@@ -9,7 +9,7 @@
 <body>
 
   <div class="login-box">
-    <!-- Bejelentkezési űrlap -->
+    
     <form action="login.php" method="POST">
       <div class="user-box">
         <input type="text" id="username" name="username" placeholder="Felhasználónév" required>
@@ -25,11 +25,11 @@
     </p>
   
 
-  <!-- Modal a jelszó/visszaállításhoz -->
+  
   <div id="forgotPasswordModal" class="modal" style="display: none;">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h3>Elfelejtett jelszó / felhasználónév</h3>
+      <h3 id="elfj">Elfelejtett jelszó  felhasználónév</h3>
       <form action="forgot_handler.php" method="POST" id="forgot-form">
         <div class="user-box">
           <input type="text" id="fp-username" name="username" placeholder="Felhasználónév (opcionális)">
@@ -48,17 +48,17 @@
     const btn = document.getElementById("forgot-password-link");
     const span = document.getElementsByClassName("close")[0];
 
-    // Amikor rákattintanak az "Elfelejtett jelszó" linkre, megjelenik a modal
+    
     btn.onclick = function() {
       modal.style.display = "block";
     };
 
-    // Bezárja a modalt, ha rákattintanak a "x" ikonra
+    
     span.onclick = function() {
       modal.style.display = "none";
     };
 
-    // Bezárja a modalt, ha kívül kattintanak rá
+    
     window.onclick = function(event) {
       if (event.target === modal) {
         modal.style.display = "none";
@@ -66,7 +66,7 @@
     };
   </script>
 
-  <!-- Regisztrációs form -->
+  
   <div class="register-box">
     <form action="register.php" method="POST">
       <div class="user-box">
