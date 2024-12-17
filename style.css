@@ -1,4 +1,25 @@
+.cars {
+  max-height: 400px; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  padding-left: 90px;
+  padding-top: 40px;
+  width: 1000px; 
+  margin-left: 400px;
+  box-sizing: border-box; 
+  white-space: nowrap; 
+}
 
+.cars::-webkit-scrollbar {
+  width: 0; 
+  background: transparent; 
+}
+
+.car-item {
+  margin-bottom: 15px; 
+}
 
 :root {
   --home-bg-color: rgba(52, 74, 57, 0.86);
@@ -183,9 +204,7 @@ button:active {
   background-color: var(--home-bg-color);
  }
 
- .cars{
-  margin-left:400px;
- }
+ 
  .car-item {
   display: none;
   text-align: center;
@@ -230,12 +249,7 @@ button:active {
   font-weight: bold;
   
 }
-.cars {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
-}
+
 
 .car-item {
   text-align: center;
@@ -251,11 +265,7 @@ button:active {
 
 
 @media only screen and (max-width: 640px) {
-  .cars {
-    margin-top: 200px;
-    flex-direction: column;
-    align-items: center;
-  }
+  
 
   .car-item {
     width: 100%;
@@ -280,10 +290,7 @@ button:active {
 
 }
 @media only screen and (min-width: 641px) and (max-width: 1007px) {
-  .cars {
-    margin-top: 200px;
-    align-items: center;
-  }
+  
 
   .car-item {
     width: 100%;
@@ -302,19 +309,13 @@ button:active {
 }
 
 @media only screen and (min-width: 1008px) and (max-width:1200px) {
-  .cars {
-    align-items: center;
-    width: 800px;
-  }
+  
 
   .car-item {
     width: 100%;
     margin: 10px 0;
   }
-  .cars{
-    margin-top: -160px;
-    margin-left: 200px;
-  }
+  
   
   .kat{
     margin-top: -250px;
@@ -335,19 +336,13 @@ button:active {
 }
 
 @media only screen and (min-width:1200px)and (max-width:1400px) {
-  .cars {
-    align-items: center;
-    width: 800px;
-  }
+  
 
   .car-item {
     width: 100%;
     margin: 10px 0;
   }
-  .cars{
-    margin-top: -160px;
-    margin-left: 300px;
-  }
+  
   
   .kat{
     margin-top: -250px;
@@ -377,11 +372,7 @@ button:active {
     border-radius: 65px;
     min-height:550px;
   }
-  .cars {
-    width: 900px;
-    margin-left: 320px;
-    margin-top: -180px;
-  }
+  
   
   .car-item {
     width: 100%;
