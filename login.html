@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,8 @@
 <body>
 
   <div class="login-box">
-    
-    <form action="login.php" method="POST"> 
+    <!-- Bejelentkezési űrlap -->
+    <form action="login.php" method="POST">
       <div class="user-box">
         <input type="text" id="username" name="username" placeholder="Felhasználónév" required>
       </div>
@@ -20,12 +20,63 @@
       <button type="submit" class="button">Bejelentkezés</button>
     </form>
 
-    <form action="register.php" method="POST"> 
+    <p>
+      <a href="#" id="forgot-password-link">Elfelejtett jelszó vagy felhasználónév?</a>
+    </p>
+  
+
+  <!-- Modal a jelszó/visszaállításhoz -->
+  <div id="forgotPasswordModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Elfelejtett jelszó / felhasználónév</h3>
+      <form action="forgot_handler.php" method="POST" id="forgot-form">
+        <div class="user-box">
+          <input type="text" id="fp-username" name="username" placeholder="Felhasználónév (opcionális)">
+        </div>
+        <div class="user-box">
+          <input type="email" id="fp-email" name="email" placeholder="Email cím" required>
+        </div>
+        <button type="submit" name="action" value="reset_password" class="button">Elfelejtett jelszó</button>
+        <button type="submit" name="action" value="recover_username" class="button">Elfelejtett felhasználónév</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("forgotPasswordModal");
+    const btn = document.getElementById("forgot-password-link");
+    const span = document.getElementsByClassName("close")[0];
+
+    // Amikor rákattintanak az "Elfelejtett jelszó" linkre, megjelenik a modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    };
+
+    // Bezárja a modalt, ha rákattintanak a "x" ikonra
+    span.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    // Bezárja a modalt, ha kívül kattintanak rá
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+  <!-- Regisztrációs form -->
+  <div class="register-box">
+    <form action="register.php" method="POST">
       <div class="user-box">
         <input type="text" id="reg-username" name="username" placeholder="Felhasználónév" required>
       </div>
       <div class="user-box">
         <input type="password" id="reg-password" name="password" placeholder="Jelszó" required>
+      </div>
+      <div class="user-box">
+        <input type="email" id="reg-email" name="email" placeholder="Email cím" required>
       </div>
       <button type="submit" class="button">Regisztráció</button>
     </form>
