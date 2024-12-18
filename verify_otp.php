@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Ellenőrzés</title>
-    <link rel="stylesheet" href="forgot.css">
+    <link rel="stylesheet" href="forgott.css">
 </head>
 <body>
 <?php
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit" class="button">Új jelszó mentése</button>
               </form>';
     } else {
-        echo "<div class='error' id='error'>Hibás OTP, vagy lejárt a kód!</div>";
+        echo "<div class='error' >Hibás OTP, vagy lejárt a kód!</div>";
     }
 }
 
