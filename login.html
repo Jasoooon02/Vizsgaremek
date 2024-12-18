@@ -30,16 +30,23 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <h3 id="elfj">Elfelejtett jelszó  felhasználónév</h3>
-      <form action="forgot_handler.php" method="POST" id="forgot-form">
+      <form method="POST" action="forgot.php" id="forgot-password-form">
         <div class="user-box">
-          <input type="text" id="fp-username" name="username" placeholder="Felhasználónév (opcionális)">
+            <input type="text" id="fp-username" name="username" placeholder="Felhasználónév (opcionális)">
         </div>
         <div class="user-box">
-          <input type="email" id="fp-email" name="email" placeholder="Email cím" required>
+            <input type="email" id="fp-email" name="email" placeholder="Email cím" required>
         </div>
         <button type="submit" name="action" value="reset_password" class="button">Elfelejtett jelszó</button>
+    </form>
+    
+    
+    <form method="POST" action="forgot_handler.php" id="forgot-username-form">
+        <div class="user-box">
+            <input type="email" id="fu-email" name="email" placeholder="Email cím" required>
+        </div>
         <button type="submit" name="action" value="recover_username" class="button">Elfelejtett felhasználónév</button>
-      </form>
+    </form>
     </div>
   </div>
 

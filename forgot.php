@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "user_db"; 
+$dbname = "user_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -17,6 +17,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
+    $username = trim($_POST['username']);
     $action = $_POST['action'];
 
     if (empty($email)) {
@@ -24,41 +25,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Érvénytelen email cím!";
         exit();
     }
 
-    if ($action === "recover_username") {
-        $stmt = $conn->prepare("SELECT username FROM users WHERE email = ?");
+    if ($action === "reset_password") {
+
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $username = $row['username'];
+            $otp = rand(100000, 999999);
+
+
+            $stmt = $conn->prepare("INSERT INTO password_resets (email, otp, expires_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 15 MINUTE))");
+            $stmt->bind_param("si", $email, $otp);
+            $stmt->execute();
+
 
             $mail = new PHPMailer(true);
             try {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'kelemenjanos400@gmail.com'; 
-                $mail->Password = 'ngos nthm ppff yuyf'; 
+                $mail->Username = 'kelemenjanos400@gmail.com';
+                $mail->Password = 'ngos nthm ppff yuyf';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->CharSet = 'UTF-8'; 
-                $mail->setFrom('kelemenjanos400@gmail.com', 'Admin');
+
+                $mail->setFrom('kelemenjanos400@gmail.com', 'Te Neved');
                 $mail->addAddress($email);
 
+                $mail->CharSet = 'UTF-8'; 
                 $mail->isHTML(true);
-                $mail->Subject = 'Felhasználónév helyreállítás';
-                $mail->Body = "Kedves Felhasználó, az Ön felhasználóneve: <b>$username</b>";
+                $mail->Subject = 'Egyszer használatos kód';
+                $mail->Body = 'Az egyszer használatos kódod: ' . $otp;
 
                 $mail->send();
-                echo "A felhasználónév sikeresen elküldve az e-mail címére.";
+
+
+                header("Location: forgot_verify.html?email=$email");
+                exit();
             } catch (Exception $e) {
                 echo "Hiba történt az email küldése során: {$mail->ErrorInfo}";
             }
