@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit" class="button">Új jelszó mentése</button>
               </form>';
     } else {
-        echo "<div class='error'>Hibás OTP, vagy lejárt a kód!</div>";
+        echo "<div class='error' id='error'>Hibás OTP, vagy lejárt a kód!</div>";
     }
 }
 

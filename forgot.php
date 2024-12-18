@@ -32,21 +32,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($action === "reset_password") {
-
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND username = ?");
+        $stmt->bind_param("ss", $email, $username);
         $stmt->execute();
         $result = $stmt->get_result();
-
+    
         if ($result->num_rows > 0) {
             $otp = rand(100000, 999999);
-
-
+    
             $stmt = $conn->prepare("INSERT INTO password_resets (email, otp, expires_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 15 MINUTE))");
             $stmt->bind_param("si", $email, $otp);
             $stmt->execute();
-
-
+    
+            // Email küldése
             $mail = new PHPMailer(true);
             try {
                 $mail->isSMTP();
@@ -56,26 +54,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Password = 'ngos nthm ppff yuyf';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
-
-
+    
                 $mail->setFrom('kelemenjanos400@gmail.com', 'Admin');
                 $mail->addAddress($email);
-
+    
                 $mail->CharSet = 'UTF-8'; 
                 $mail->isHTML(true);
                 $mail->Subject = 'Egyszer használatos kód';
                 $mail->Body = 'Az egyszer használatos kódod: ' . $otp;
-
+    
                 $mail->send();
-
-
+    
                 header("Location: forgot_verify.html?email=$email");
                 exit();
             } catch (Exception $e) {
                 echo "Hiba történt az email küldése során: {$mail->ErrorInfo}";
             }
         } else {
-            echo "Ez az email cím nincs regisztrálva!";
+            echo "Ez az email cím vagy felhasználónév nincs regisztrálva vagy nem helyesen van megadva!";
         }
     }
 }
