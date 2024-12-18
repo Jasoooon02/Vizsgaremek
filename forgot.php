@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Port = 587;
 
 
-                $mail->setFrom('kelemenjanos400@gmail.com', 'Te Neved');
+                $mail->setFrom('kelemenjanos400@gmail.com', 'Admin');
                 $mail->addAddress($email);
 
                 $mail->CharSet = 'UTF-8'; 
