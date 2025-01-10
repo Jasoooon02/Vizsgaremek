@@ -14,41 +14,40 @@
     <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
 </header>
 <input type="checkbox" id="ham-menu">
-<label for="ham-menu">
+  <label for="ham-menu">
     <div class="hide-des">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
     </div>
-</label>
-<div class="full-page-green"></div>
-<div class="ham-menu">
+  </label>
+  <div class="full-page-green"></div>
+  <div class="ham-menu">
     <ul class="centre-text bold-text">
-        <li><a href="index.html">Kezdőlap</a></li>
+      <li><a href="index.html">Kezdőlap</a></li>
     </ul>
-</div>
+  </div>
 
-<div class="container">
+<div class="container" id="car-page">
     <div class="car-image">
         <div class="slide-gallery">
-            <img src="dodge_feher.jpg" alt="Dodge Charger Fehér" class="car-slide active" data-color="Fehér">
-            <img src="dodge_fekete.jpg" alt="Dodge Charger Fekete" class="car-slide" data-color="Fekete">
-            <img src="dodge_piros.jpg" alt="Dodge Charger Piros" class="car-slide" data-color="Piros">
-            <img src="dodge_kek.jpg" alt="Dodge Charger Kék" class="car-slide" data-color="Kék">
-            <img src="dodge-charger.jpg" alt="Dodge Charger Szürke" class="car-slide" data-color="Szürke">
+            <img src="e46_black.jpg" alt="BMW E46 Fekete" class="car-slide" data-color="Fekete">
+            <img src="e46_white.jpg" alt="BMW E46 Fehér" class="car-slide active" data-color="Fehér">
+            <img src="e46_red.jpg" alt="BMW E46 Piros" class="car-slide" data-color="Piros">
+            <img src="e46_blue.jpg" alt="BMW E46 Kék" class="car-slide" data-color="Kék">
+            <img src="e46_gray.jpg" alt="BMW E46 Szürke" class="car-slide" data-color="Szürke">
         </div>
     </div>
     <div class="car-details">
-        <h1 id="car-name">Dodge Charger</h1>
+        <h1 id="car-name">BMW E46</h1>
         <div class="description">
             <p>
-               A Dodge Charger egy izmos és erőteljes amerikai szedán, amely klasszikus formájával és modern technológiájával vonzza a figyelmet.
-               Jellegzetes, agresszív megjelenését a széles hűtőrács és a hátsó LED fénycsíkok hangsúlyozzák.
-               Motorváltozatai között szerepelnek erőteljes V6-os és V8-as motorok, melyek lenyűgöző teljesítményt nyújtanak. 
-               A belső tér kényelmes és sportos, modern infotainment rendszerrel és kiváló vezetési élménnyel.
+                A BMW E46 a 3-as sorozat egyik legikonikusabb generációja, amelyet elegáns és időtálló dizájn, kifinomult belső tér, valamint kiváló vezetési dinamika jellemez.
+                Gazdaságos és teljesítményorientált benzin- és dízelmotorjaival egyaránt népszerű, sportos karaktere és megbízhatósága pedig a mai napig kiemeli a prémium kategóriában.
+                A precíz kormányzás és a klasszikus BMW-vezetési élmény teszi ideálissá mindennapi használatra és autórajongók számára egyaránt.
             </p>
         </div>
         <div class="options">
@@ -66,19 +65,20 @@
                 <div class="dropdown">
                     <label for="engine">Motor:</label>
                     <select id="engine">
-                        <option value="benzin" data-price="5 980 000">Benzin - 5 980 000 Ft</option>
-                        <option value="dizel" data-price="6 200 000">Dízel - 6 200 000 Ft</option>
+                        <option value="benzin" data-price="29 610 000">Benzin - 29 610 000 Ft</option>
+                        <option value="dizel" data-price="32 102 000">Dízel - 32 102 000 Ft</option>
                     </select>
                 </div>
             </div>
         </div>
         
         <div class="price">
-            <p id="car-price">5 980 000 Ft-tól</p>
+            <p id="car-price">29 610 000 Ft-tól</p>
             <button id="add-to-cart-btn">Kosárba</button>
         </div>
     </div>
 </div>
+
 
 <div id="cart-modal" class="cart-modal">
     <div class="modal-content">
@@ -109,7 +109,9 @@
         window.location.href = 'checkout.html';
     });
 </script>
+
 <script src="cart.js"></script>
 <script src="carslide.js"></script>
+
 </body>
 </html>

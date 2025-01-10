@@ -473,7 +473,7 @@ h3 {
   max-width: 500px; 
   max-height: 70vh; 
   overflow-y: auto; 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Árnyék */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
   margin-top: 50px;
   justify-content: center;
   align-items: center;
@@ -550,4 +550,95 @@ h3 {
 }
 
 
+.cars {
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100%; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  margin-top: -130px;
+  box-sizing: border-box;
+  justify-content: center;
+  padding-left: 80px;
+  margin-left: 400px;
+}
 
+.cars::-webkit-scrollbar {
+  width: 0; 
+  background: transparent; 
+}
+
+.car-item {
+  flex: 1 1 calc(33.33% - 20px); 
+  margin-bottom: 15px;
+}
+
+
+@media (max-width: 1324px) {
+  .cars {
+      padding: 15px;
+      max-width: 90%; 
+      margin-top: 220px; 
+      margin-left: auto;
+      
+  }
+
+  .car-item {
+      flex: 1 1 calc(50% - 20px); 
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+      padding: 10px;
+  }
+
+  .cars {
+      max-height: none;
+      flex-wrap: wrap;
+      padding: 10px;
+      margin-top: 200px; 
+      width: 100%; 
+  }
+
+  .car-item {
+      flex: 1 1 100%; 
+  }
+
+  .category-menu {
+      margin-bottom: 15px; 
+  }
+
+  footer button {
+    width: 100%; 
+    max-width: 150px; 
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    
+}
+
+
+
+.jobbra button {
+    width: 100%; 
+    max-width: 150px; 
+}
+
+.icon, .iconn {
+    margin-right: 10px;
+}
+
+.text1, .text2 {
+    display: block;
+    text-align: center;
+}
+}
