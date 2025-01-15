@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'kelemenjanos400@gmail.com'; 
-                $mail->Password = 'ngos nthm ppff yuyf'; 
+                $mail->Password = 'tbws adir tbrk tbgu'; 
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
@@ -58,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Body = "Kedves Felhasználó, az Ön felhasználóneve: <b>$username</b>";
 
                 $mail->send();
-                echo "A felhasználónév sikeresen elküldve az e-mail címére.";
+                echo "<script>alert('A felhasználónév sikeresen elküldve az e-mail címére.');</script>";
+                echo "<script>setTimeout(function() { window.location.href = 'login.html'; }, 100);</script>";
             } catch (Exception $e) {
                 echo "Hiba történt az email küldése során: {$mail->ErrorInfo}";
             }
