@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 alert('Megrendelés sikeresen leadva! A megrendelés azonosítója: " . $order_id . "');
                 setTimeout(function() {
                     window.location.href = 'index.html';
-                }, 500); // 5 másodperc múlva átirányít
+                }, 500); 
               </script>";
     } else {
         echo "Hiba a megrendelés leadásakor: " . $conn->error;
