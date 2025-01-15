@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("si", $email, $otp);
             $stmt->execute();
     
-            // Email küldése
+            
             $mail = new PHPMailer(true);
             try {
                 $mail->isSMTP();
