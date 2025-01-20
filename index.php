@@ -7,9 +7,15 @@
   <title>Bejelentkezés & Regisztráció</title>
 </head>
 <body>
+  <?php
+  session_start();
+  if (isset($_SESSION['username'])) {
+      header("Location: fo.php"); 
+      exit();
+  }
+  ?>
 
   <div class="login-box">
-    
     <form action="login.php" method="POST">
       <div class="user-box">
         <input type="text" id="username" name="username" placeholder="Felhasználónév" required>
@@ -47,26 +53,6 @@
       </div>
     </div>
 
-    <script>
-      const modal = document.getElementById("forgotPasswordModal");
-      const btn = document.getElementById("forgot-password-link");
-      const span = document.getElementsByClassName("close")[0];
-
-      btn.onclick = function() {
-        modal.style.display = "block";
-      };
-
-      span.onclick = function() {
-        modal.style.display = "none";
-      };
-
-      window.onclick = function(event) {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      };
-    </script>
-  
     <div class="register-box">
       <form action="register.php" method="POST">
         <div class="user-box">
@@ -82,5 +68,35 @@
       </form>
     </div>
 
+    <!-- Folytatás gomb -->
+    <button id="continue-without-login" class="button">Folytatás bejelentkezés nélkül</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const modal = document.getElementById("forgotPasswordModal");
+      const btn = document.getElementById("forgot-password-link");
+      const span = document.getElementsByClassName("close")[0];
+      
+      btn.onclick = function() {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function(event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // Folytatás bejelentkezés nélkül gomb működése
+      document.getElementById("continue-without-login").onclick = function() {
+        window.location.href = "fo.php"; // Módosítsd a kívánt oldalra
+      };
+    });
+  </script>
 </body>
 </html>
