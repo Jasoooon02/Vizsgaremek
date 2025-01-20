@@ -179,10 +179,10 @@
     position: fixed;
     top: 0;
 }
-   @font-face {
-    font-family: 'Raptor';
-    src: url('path/to/your/font/file.ttf'); 
-  }
+@font-face {
+  font-family: Raptor;
+  src: local('Raptor Kill'), url('raptorkill.woff') format('woff');
+}
    .sz{
     font-size: 100px;
     margin: auto;

@@ -1,3 +1,31 @@
+::placeholder {
+  color: #86a58d;
+  
+}
+.btn{
+  color: #86a58d;
+  background-color: rgba(52, 74, 57, 0.86);
+  border: 1px solid #000000;
+}
+.min-price{
+  font-size: 20px;
+  color: rgba(52, 74, 57, 0.86);;
+}
+.max-price{
+  font-size: 20px;
+  color: rgba(52, 74, 57, 0.86);;
+}
+.min{
+  background-color: rgba(52, 74, 57, 0.86);
+}
+.max{
+  background-color: rgba(52, 74, 57, 0.86);
+}
+.filter{
+  text-align: center;
+  margin-top: 10px;
+}
+
 @font-face {
   font-family: Raptor;
   src: local('Raptor Kill'), url('raptorkill.woff') format('woff');
