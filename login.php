@@ -1,9 +1,9 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "user_db"; 
+$servername = "sql204.infinityfree.com";
+$username = "if0_38141147"; 
+$password = "manoka87"; 
+$dbname = "if0_38141147_user_db"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             if (password_verify($input_password, $row['password'])) {
                 $_SESSION['username'] = $input_username;
-                header("Location: index.html"); 
+                header("Location: fo.html"); 
                 exit();
             } else {
                 echo "Helytelen jelszó!";

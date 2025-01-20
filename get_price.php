@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli('localhost', 'root', '', 'cars_db');
+$conn = new mysqli('sql204.infinityfree.com', 'if0_38141147', 'manoka87', 'if0_38141147_cars_db');
 $conn->set_charset("utf8");
 if (isset($_GET['name']) && isset($_GET['engine'])) {
     $name = $conn->real_escape_string($_GET['name']);

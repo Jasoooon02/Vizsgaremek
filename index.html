@@ -1,153 +1,86 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>DemonCars</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bejstyle.css">
+  <title>Bejelentkezés & Regisztráció</title>
 </head>
 <body>
-<header>
-    <p class="sz">DemonCars</p>
+
+  <div class="login-box">
     
-</header>
+    <form action="login.php" method="POST">
+      <div class="user-box">
+        <input type="text" id="username" name="username" placeholder="Felhasználónév" required>
+      </div>
+      <div class="user-box">
+        <input type="password" id="password" name="password" placeholder="Jelszó" required>
+      </div>
+      <button type="submit" class="button">Bejelentkezés</button>
+    </form>
 
-<div class="frame">
-<div class="category">
+    <p>
+      <a href="#" id="forgot-password-link">Elfelejtett jelszó vagy felhasználónév?</a>
+    </p>
+  
+    <div id="forgotPasswordModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="elfj">Elfelejtett jelszó  felhasználónév</h3>
+        <form method="POST" action="forgot.php" id="forgot-password-form">
+          <div class="user-box">
+              <input type="text" id="fp-username" name="username" placeholder="Felhasználónév" required>
+          </div>
+          <div class="user-box">
+              <input type="email" id="fp-email" name="email" placeholder="Email cím" required>
+          </div>
+          <button type="submit" name="action" value="reset_password" class="button">Elfelejtett jelszó</button>
+        </form>
+        
+        <form method="POST" action="forgot_handler.php" id="forgot-username-form">
+          <div class="user-box">
+              <input type="email" id="fu-email" name="email" placeholder="Email cím" required>
+          </div>
+          <button type="submit" name="action" value="recover_username" class="button">Elfelejtett felhasználónév</button>
+        </form>
+      </div>
+    </div>
 
-    <ul class="category-menu">
-        <li data-category="all">Minden termék</li>
-        <li data-category="sport">Sportautók</li>
-        <li data-category="super">Szuperautók</li>
-        <li data-category="muscle">Izomautók</li>
-        <li data-category="street">Utcai autók</li>
-    </ul>
-</div>
-<p class="kat"> Kategóriák</p>
-<div class="cars">
-    <div class="car-item" data-category="street">
-        <a href="golf.html">
-            <img src="golf_black.jpg" alt="Golf MK4">
-        </a>
-        <p class="name">Golf MK4</p>
-        <p class="price">1 895 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="sport">
-        <a href="audir8.html">
-            <img src="r8_black.jpg" alt="Audi R8">
-        </a>
-        <p class="name">Audi R8</p>
-        <p class="price">10 890 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="super">
-        <a href="bugattic.html">
-            <img src="bugatti_black.jpg" alt="Bugatti Chiron">
-        </a>
-        <p class="name">Bugatti Chiron</p>
-        <p class="price">20 290 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="muscle">
-        <a href="dodgech.html">
-            <img src="dodge_fekete.jpg" alt="Dodge Charger">
-        </a>
-        <p class="name">Dodge Charger</p>
-        <p class="price">5 980 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="street">
-        <a href="golf6.html">
-            <img src="golf6_black.png" alt="Golf MK6">
-        </a>
-        <p class="name">Golf MK6</p>
-        <p class="price">17 210 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="street">
-        <a href="e39.html">
-            <img src="e39_black.jpeg" alt="BMW E39">
-        </a>
-        <p class="name">BMW E39</p>
-        <p class="price">20 780 000 Ft-tól</p>
-    </div>
-    <div class="car-item" data-category="street">
-        <a href="e46.html">
-            <img src="e46_black.jpg" alt="BMW E39">
-        </a>
-        <p class="name">BMW E46</p>
-        <p class="price">29 610 000 Ft-tól</p>
-    </div>
-</div>
-</div>
+    <script>
+      const modal = document.getElementById("forgotPasswordModal");
+      const btn = document.getElementById("forgot-password-link");
+      const span = document.getElementsByClassName("close")[0];
 
-<section class="team-section">
-    <h1>Egy összetartó csapat vagyunk</h1>
-    <p class="subtitle">Egy menő csapat, rengeteg energiával!</p>
+      btn.onclick = function() {
+        modal.style.display = "block";
+      };
 
-    <div class="team-container">
-        <div class="team-member">
-            <img src="jani.jpg" alt="Kelemen János" class="team-photo">
-            <h3>Kelemen János</h3>
-            <p class="position">Ceo</p>
-            <p class="description">Kattints ide, és kezdheted is az írást. Quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem.</p>
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function(event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  
+    <div class="register-box">
+      <form action="register.php" method="POST">
+        <div class="user-box">
+          <input type="text" id="reg-username" name="username" placeholder="Felhasználónév" required>
         </div>
-
-        <div class="team-member">
-            <img src="balazs.jpg" alt="Gáspár Balázs" class="team-photo">
-            <h3>Gáspár Balázs</h3>
-            <p class="position">Ceo</p>
-            <p class="description">Kattints ide, és kezdheted is az írást. Voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur.</p>
+        <div class="user-box">
+          <input type="password" id="reg-password" name="password" placeholder="Jelszó" required>
         </div>
-
-        <div class="team-member">
-            <img src="bence.jpg" alt="Kollár Bence" class="team-photo">
-            <h3>Kollár Bence</h3>
-            <p class="position">Ceo</p>
-            <p class="description">Kattints ide, és kezdheted is az írást. Quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.</p>
+        <div class="user-box">
+          <input type="email" id="reg-email" name="email" placeholder="Email cím" required>
         </div>
+        <button type="submit" class="button">Regisztráció</button>
+      </form>
     </div>
-</section>
-<script>const cars = document.querySelectorAll('.car-item');
-  const categoryLinks = document.querySelectorAll('.category-menu li');
-  
-  categoryLinks.forEach(link => {
-      link.addEventListener('click', () => {
-          const category = link.getAttribute('data-category');
-  
-          cars.forEach(car => {
-              car.classList.remove('active');
-              if (category === 'all' || car.getAttribute('data-category') === category) {
-                  car.classList.add('active');
-              }
-          });
-      });
-  });
-  
-  
-  document.querySelector('[data-category="all"]').click();
-  </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const carsDiv = document.querySelector('.cars');
-        carsDiv.style.maxHeight = '400px'; 
-        carsDiv.style.overflowY = 'auto'; 
-    });
-</script>
-<footer>
-    <button onclick="window.open('https://www.facebook.com/profile.php?id=100007516684232', '_blank')">
-        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="33" viewBox="0 0 512 512" height="33"><g fill-rule="evenodd" clip-rule="evenodd"><path fill="#3a5ba2" d="m256.23 512c140.58 0 255.77-115.19 255.77-255.77 0-141.046-115.19-256.23-255.77-256.23-141.046 0-256.23 115.184-256.23 256.23 0 140.58 115.184 255.77 256.23 255.77z"></path><path fill="#fff" d="m224.023 160.085c0-35.372 28.575-63.946 63.938-63.946h48.072v63.946h-32.199c-8.608 0-15.873 7.257-15.873 15.873v32.192h48.072v63.938h-48.072v144.22h-63.938v-144.22h-48.065v-63.938h48.065z"></path></g></svg></span>
-        <span class="text1">Kövess be</span>
-        <span class="text2">Jani</span>
-    </button>
-    <div class="jobbra">
-        <button onclick="window.open('https://www.instagram.com/kelemen.jani.39/', '_blank')"> 
-            <span class="iconn"><svg height="33" viewBox="0 0 128 128" width="33" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><linearGradient id="a" gradientTransform="matrix(1 0 0 -1 594 633)" gradientUnits="userSpaceOnUse" x1="-566.711" x2="-493.288" y1="516.569" y2="621.43"><stop offset="0" stop-color="#ffb900"></stop><stop offset="1" stop-color="#9100eb"></stop></linearGradient><circle cx="64" cy="64" fill="url(#a)" r="64"></circle><g fill="#fff"><path d="m82.333 104h-36.666c-11.947 0-21.667-9.719-21.667-21.667v-36.666c0-11.948 9.72-21.667 21.667-21.667h36.666c11.948 0 21.667 9.719 21.667 21.667v36.667c0 11.947-9.719 21.666-21.667 21.666zm-36.666-73.333c-8.271 0-15 6.729-15 15v36.667c0 8.271 6.729 15 15 15h36.666c8.271 0 15-6.729 15-15v-36.667c0-8.271-6.729-15-15-15z"></path><path d="m64 84c-11.028 0-20-8.973-20-20 0-11.029 8.972-20 20-20s20 8.971 20 20c0 11.027-8.972 20-20 20zm0-33.333c-7.352 0-13.333 5.981-13.333 13.333 0 7.353 5.981 13.333 13.333 13.333s13.333-5.98 13.333-13.333c0-7.352-5.98-13.333-13.333-13.333z"></path><circle cx="85.25" cy="42.75" r="4.583"></circle></g></svg></span>
-            <span class="text1">Kövess be</span>
-            <span class="text2">Jani</span> 
-        </button>
-    </div>
-</footer>
 
 </body>
 </html>
-

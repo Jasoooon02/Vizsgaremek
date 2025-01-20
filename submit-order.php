@@ -6,10 +6,10 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; 
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "demoncars_db";
+$servername = "sql204.infinityfree.com";
+$username = "if0_38141147";
+$password = "manoka87";
+$dbname = "if0_38141147_demoncars_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 $conn->set_charset("utf8");
@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>
                 alert('Megrendelés sikeresen leadva! A megrendelés azonosítója: " . $order_id . "');
                 setTimeout(function() {
-                    window.location.href = 'index.html';
+                    window.location.href = 'fo.html';
                 }, 500); 
               </script>";
     } else {

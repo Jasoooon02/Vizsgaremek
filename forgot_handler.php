@@ -4,10 +4,10 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "user_db"; 
+$servername = "sql204.infinityfree.com";
+$username = "if0_38141147";
+$password = "manoka87";
+$dbname = "if0_38141147_user_db"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $mail->send();
                 echo "<script>alert('A felhasználónév sikeresen elküldve az e-mail címére.');</script>";
-                echo "<script>setTimeout(function() { window.location.href = 'login.html'; }, 100);</script>";
+                echo "<script>setTimeout(function() { window.location.href = 'index.html'; }, 100);</script>";
             } catch (Exception $e) {
                 echo "Hiba történt az email küldése során: {$mail->ErrorInfo}";
             }

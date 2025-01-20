@@ -320,6 +320,17 @@ button:active {
     width: 100%;
     margin: 10px 0;
   }
+  .cars {
+    padding: 15px;
+    max-width: 90%; 
+    margin-top: 220px; 
+    margin-left: auto;
+    
+}
+
+.car-item {
+    flex: 1 1 calc(50% - 20px); 
+}
   
   
   .kat{
@@ -581,7 +592,7 @@ h3 {
 }
 
 
-@media (max-width: 1324px) {
+@media (max-width: 1624px) {
   .cars {
       padding: 15px;
       max-width: 90%; 
@@ -593,6 +604,18 @@ h3 {
   .car-item {
       flex: 1 1 calc(50% - 20px); 
   }
+}
+
+@media (max-width: 1824px) {
+  .cars {
+      padding: 15px;
+      max-width: 90%; 
+      margin-top: 220px; 
+      margin-left: auto;
+      
+  }
+
+  
 }
 
 @media (max-width: 768px) {
