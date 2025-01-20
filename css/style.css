@@ -200,11 +200,12 @@ button:active {
   color: rgb(58, 56, 56);
   font-size: 20px;
   font-weight: bold;
-  
+  width: 150px;
 }
 .category-menu li {
   cursor: pointer;
   margin-bottom: 5px;
+  width: 150px;
   
 }
 .category-menu li:hover {
@@ -258,6 +259,7 @@ button:active {
   }
   .category-menu{
     margin-left: 20px;
+    width: 150px;
   }
   .kat{
     margin-left: 20px;
@@ -280,6 +282,7 @@ button:active {
   }
   .category-menu{
     margin-left: 20px;
+    width: 150px;
   }
   .kat{
     margin-left: 20px;
@@ -310,7 +313,7 @@ button:active {
     color: rgb(58, 56, 56);
     font-size: 20px;
     font-weight: bold;
-    
+    width: 150px;
   }
 }
 
@@ -348,6 +351,7 @@ button:active {
     color: rgb(58, 56, 56);
     font-size: 20px;
     font-weight: bold;
+    width: 150px;
     
   }
 }
@@ -386,6 +390,7 @@ button:active {
     color: rgb(58, 56, 56);
     font-size: 20px;
     font-weight: bold;
+    width: 150px;
   }
   }
 
@@ -638,6 +643,7 @@ h3 {
 
   .category-menu {
       margin-bottom: 15px; 
+      width: 150px;
   }
 
   footer button {
