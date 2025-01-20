@@ -1,15 +1,14 @@
-
 @font-face {
-    font-family: 'Raptor';
-    src: url('path/to/your/font/file.ttf'); 
-  }
-  .sz{
-      font-size: 100px;
-      margin: auto;
-      text-align: center;
-      color: #86a58d;
-      font-family: Raptor;
-  }
+  font-family: Raptor;
+  src: local('Raptor Kill'), url('raptorkill.woff') format('woff');
+}
+.sz{
+    font-size: 100px;
+    margin: auto;
+    text-align: center;
+    color: #86a58d;
+    font-family: Raptor;
+}
   :root {
           --home-bg-color: rgba(52, 74, 57, 0.86);
           --menu-bg-color: #cbcbc2;
