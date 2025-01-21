@@ -17,6 +17,13 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Ellenőrzés</title>
     <link rel="stylesheet" href="css/forgott.css">
+    <script>
+        function hideAlert() {
+            setTimeout(function() {
+                document.getElementById('otp-alert').style.display = 'none';
+            }, 2000);
+        }
+    </script>
 </head>
 <body>
 <?php
@@ -35,9 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        
+        echo '<div id="otp-alert" class="success">Az OTP kód helyes. Most állíthatod be az új jelszót!</div>';
         echo '<form action="reset_password.php" method="POST" class="otp-box">
-                <div class="success" >Az OTP kód helyes. Most állíthatod be az új jelszót!</div>
                 <input type="hidden" name="email" value="' . htmlspecialchars($email) . '">
                 <input type="hidden" name="otp" value="' . htmlspecialchars($otp) . '">
                 <div class="user-box">
@@ -48,8 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <button type="submit" class="button">Új jelszó mentése</button>
               </form>';
+        echo '<script>hideAlert();</script>';
     } else {
-        echo "<div class='error' >Hibás OTP, vagy lejárt a kód!</div>";
+        echo "<div class='error'>Hibás OTP, vagy lejárt a kód!</div>";
     }
 }
 

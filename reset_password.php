@@ -16,18 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = trim($_POST['new_password']);
     $confirm_password = trim($_POST['confirm_password']);
 
-
     if (empty($email) || empty($otp) || empty($new_password) || empty($confirm_password)) {
         echo "Minden mező kitöltése kötelező!";
         exit();
     }
 
-
     if ($new_password !== $confirm_password) {
         echo "A jelszavak nem egyeznek!";
+        
+        echo '<script>
+                setTimeout(function() {
+                    window.history.back();
+                }, 2000);
+              </script>';
         exit();
     }
-
 
     $stmt = $conn->prepare("SELECT * FROM password_resets WHERE email = ? AND otp = ? AND expires_at > NOW()");
     $stmt->bind_param("si", $email, $otp);
@@ -35,15 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-
         $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
-
 
         $update_stmt = $conn->prepare("UPDATE users SET password = ? WHERE email = ?");
         $update_stmt->bind_param("ss", $hashed_password, $email);
 
         if ($update_stmt->execute()) {
-
             header("Location: index.html");
             exit();
         } else {
