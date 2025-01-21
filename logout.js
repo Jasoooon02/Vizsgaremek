@@ -1,25 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
     const userIcon = document.getElementById("user-icon");
-  
-    // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
-    const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
-  
-    // Beállítjuk az ikon címét (opcionális, ha szeretnéd vizuálisan jelezni az állapotot)
-    userIcon.title = isLoggedIn ? "Kijelentkezés" : "Bejelentkezés";
-  
-    // Ikon kattintás eseménykezelő
-    userIcon.addEventListener("click", () => {
-      if (isLoggedIn) {
-        // Ha be van jelentkezve, megerősítés kijelentkezéshez
-        const confirmLogout = confirm("Biztosan ki szeretnél jelentkezni?");
-        if (confirmLogout) {
-          sessionStorage.removeItem("loggedIn"); // Kijelentkezési állapot törlése
-          alert("Sikeresen kijelentkeztél!");
-          window.location.reload(); // Oldal frissítése
+
+    // Ellenőrizzük, hogy be van-e jelentkezve
+    function isLoggedIn() {
+        return localStorage.getItem("loggedIn") === "true";
+    }
+
+    function updateIcon() {
+        if (isLoggedIn()) {
+            userIcon.title = "Kijelentkezés";
+        } else {
+            userIcon.title = "Bejelentkezés";
         }
-      } else {
-        alert("Nem vagy bejelentkezve!");
-      }
+    }
+
+    // Frissítjük az ikont
+    updateIcon();
+
+    // Kattintás esemény kezelése
+    userIcon.addEventListener("click", () => {
+        if (isLoggedIn()) {
+            // Kijelentkezés megerősítése
+            const confirmLogout = confirm("Biztosan ki szeretnél jelentkezni?");
+            if (confirmLogout) {
+                localStorage.removeItem("loggedIn");
+                alert("Sikeresen kijelentkeztél!");
+                updateIcon(); // Frissítjük az ikont kijelentkezés után
+                location.reload();  // Az oldal frissítése
+            }
+        } else {
+            // Ha nem vagy bejelentkezve, irányítsuk a bejelentkezési oldalra
+            window.location.href = "index.html";
+        }
     });
-  });
-  
+});
