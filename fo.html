@@ -4,16 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/fo.css">
     <title>DemonCars</title>
 
 </head>
 <body>
-<header>
-    <p class="sz">DEMONCARS</p>
+    <header>
+        <p class="sz">DEMONCARS</p>
+        <div class="user-icon-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Felhasználó" id="user-icon">
+        </div>
+    </header>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const userIcon = document.getElementById("user-icon");
     
-</header>
-<div class="filter">
+        
+        const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
+    
+        
+        userIcon.addEventListener("click", () => {
+            if (isLoggedIn) {
+                
+                const confirmLogout = confirm("Biztosan ki szeretnél jelentkezni?");
+                if (confirmLogout) {
+                    sessionStorage.removeItem("loggedIn"); 
+                    alert("Sikeresen kijelentkeztél!");
+                    window.location.reload(); 
+                }
+            } else {
+                
+                window.location.href = "index.html";
+            }
+        });
+    });
+    </script>
+    <div class="filter">
     <label for="min-price" class="min-price">Min. ár:</label>
     <input type="number" id="min-price" class="min" placeholder="Pl. 1000000">
     <label for="max-price" class="max-price">Max. ár:</label>
@@ -115,45 +141,7 @@
 </section>
 <script src="scripts.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const cars = document.querySelectorAll('.car-item');
-        const filterBtn = document.getElementById('filter-btn');
-        const resetBtn = document.getElementById('reset-btn');
-        const minPriceInput = document.getElementById('min-price');
-        const maxPriceInput = document.getElementById('max-price');
-
-        filterBtn.addEventListener('click', () => {
-            const minPrice = parseInt(minPriceInput.value) || 0;
-            const maxPrice = parseInt(maxPriceInput.value) || Infinity;
-
-            cars.forEach(car => {
-                const carPrice = parseInt(car.getAttribute('data-price'));
-                if (carPrice >= minPrice && carPrice <= maxPrice) {
-                    car.style.display = 'block';
-                } else {
-                    car.style.display = 'none';
-                }
-            });
-        });
-
-        resetBtn.addEventListener('click', () => {
-           
-            minPriceInput.value = '';
-            maxPriceInput.value = '';
-
-            
-            cars.forEach(car => {
-                car.style.display = 'block';
-            });
-        });
-
-        
-        cars.forEach(car => {
-            car.style.display = 'block';
-        });
-    });
-</script>
+<script src="szuro.js"></script>
 
 <footer>
     <button onclick="window.open('https://www.facebook.com/profile.php?id=100007516684232', '_blank')">
