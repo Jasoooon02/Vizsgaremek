@@ -1,3 +1,6 @@
+::placeholder{
+  color: white;
+}
 body{
     background-color: #212121;
   }
@@ -23,10 +26,10 @@ body{
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: #fff;
+    color: #ff0000;
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #ff0000;
     outline: none;
     background: transparent;
   }
@@ -85,8 +88,8 @@ body{
     position: relative;
     padding: 10px 24px;
     font-size: 18px;
-    color: rgb(193, 163, 98);
-    border: 2px solid rgb(193, 163, 98);
+    color: #8f0000;
+    border: 2px solid #8f0000;
     border-radius: 34px;
     background-color: transparent;
     font-weight: 600;
@@ -104,7 +107,7 @@ body{
     border-radius: inherit;
     scale: 0;
     z-index: -1;
-    background-color: rgb(193, 163, 98);
+    background-color: #8f0000;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
   }
   
@@ -307,7 +310,7 @@ body{
           display: inline;
           font-weight: bold;
           padding: 7px;
-          color: var(--icon-hover-bg);
+          color:white;
         }
         
         
@@ -376,7 +379,7 @@ body{
             display: inline;
             font-weight: bold;
             padding: 7px;
-            color: var(--icon-hover-bg);
+            color: white;
           }
         .ham-menu{
           font-size: small;
@@ -489,6 +492,7 @@ body{
   
         #elfj{
           margin-bottom: 15px;
+          color: white;
         }
   
   
