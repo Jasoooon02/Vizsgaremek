@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const userIcon = document.getElementById("user-icon");
 
-    // Ellenőrizzük, hogy be van-e jelentkezve
+
     function isLoggedIn() {
-        return localStorage.getItem("loggedIn") === "true";
+        return localStorage.getItem("isLoggedIn") === "true";
     }
 
     function updateIcon() {
@@ -14,22 +14,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Frissítjük az ikont
+    
     updateIcon();
 
-    // Kattintás esemény kezelése
+    
     userIcon.addEventListener("click", () => {
         if (isLoggedIn()) {
-            // Kijelentkezés megerősítése
+            
             const confirmLogout = confirm("Biztosan ki szeretnél jelentkezni?");
             if (confirmLogout) {
-                localStorage.removeItem("loggedIn");
-                alert("Sikeresen kijelentkeztél!");
-                updateIcon(); // Frissítjük az ikont kijelentkezés után
-                location.reload();  // Az oldal frissítése
+                
+                fetch('logout.php', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            
+                            localStorage.removeItem("isLoggedIn");
+                            localStorage.removeItem("username");
+                            alert(data.message);
+                            
+                            window.location.href = "index.html";
+                        } else {
+                            alert("Hiba történt a kijelentkezés során!");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Hiba a kijelentkezés során:", error);
+                        alert("Nem sikerült kapcsolatot létesíteni a szerverrel.");
+                    });
             }
         } else {
-            // Ha nem vagy bejelentkezve, irányítsuk a bejelentkezési oldalra
+            
             window.location.href = "index.html";
         }
     });

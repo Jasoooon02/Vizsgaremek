@@ -27,8 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if (password_verify($input_password, $row['password'])) {
+                
                 $_SESSION['username'] = $input_username;
-                echo "<script>alert('Sikeresen bejelentkeztél!'); window.location.href='fo.html';</script>";
+                echo "
+                    <script>
+                        alert('Sikeresen bejelentkeztél!');
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('username', '" . $input_username . "');
+                        window.location.href = 'fo.html';
+                    </script>";
                 exit();
             } else {
                 echo "<script>alert('Helytelen jelszó!'); window.location.href='index.html';</script>";
