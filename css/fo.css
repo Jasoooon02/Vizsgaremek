@@ -35,10 +35,12 @@
   }
   .min{
     background-color: rgba(0, 0, 0, 0.86);
+    color: white;
     
   }
   .max{
     background-color: rgba(0, 0, 0, 0.86);
+    color: white;
   }
   .filter{
     text-align: center;
