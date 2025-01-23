@@ -1,3 +1,10 @@
+.sz {
+  font-size: 100px;
+  margin: auto;
+  text-align: center;
+  color: #8f0000;
+  font-family: Raptor;
+}
 :root {
 --home-bg-color: rgb(0 0 0 / 86%);
 --menu-bg-color: #ffffff;
@@ -182,19 +189,13 @@
   font-family: Raptor;
   src: local('Raptor Kill'), url('raptorkill.woff') format('woff');
 }
-   .sz{
-    font-size: 100px;
-    margin: auto;
-    text-align: center;
-    color: #86a58d;
-    font-family: Raptor;
-}
-@media only screen and (max-width: 640px) {
+
+@media only screen and (max-width: 720px) {
     p {
       font-size:50px;
     }
     .sz{
-        font-size: 50px;
+        font-size: 40px;
     }
     a {
         font-size:30px;
@@ -242,7 +243,7 @@ body{
 }
 
 .order-form button {
-    background-color: #ff4500;
+    background-color: #8f0000;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -260,4 +261,21 @@ body{
     justify-content: center;
     align-items: center;
     display: grid;
+}
+
+@media only screen and (max-width: 400px) {
+  .sz{
+    font-size: 50px;
+    margin-left: 90px;
+  }
+
+
+}
+@media only screen and (max-width: 380px) {
+  .sz{
+    font-size: 40px;
+    margin-left: 90px;
+  }
+
+
 }
