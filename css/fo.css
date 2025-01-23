@@ -718,3 +718,29 @@
       text-align: center;
   }
   }
+  @media screen and (min-width: 768px)and (max-width: 1007px) {
+    #user-icon {
+        width: 45px;
+        height: 45px;
+        margin-top:-90px;
+       margin-right: 20px;
+    }
+}
+
+    @media screen and (max-width: 768px) {
+        #user-icon {
+            width: 30px;
+            height: 30px;
+            margin-top:-110px;
+           margin-right: 10px;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        #user-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            margin-top: -50px;
+        }
+    }
