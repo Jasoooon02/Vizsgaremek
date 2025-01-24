@@ -4,10 +4,10 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-$servername = "sql204.infinityfree.com";
-$username = "if0_38141147";
-$password = "manoka87";
-$dbname = "if0_38141147_user_db"; 
+$servername = "sql302.infinityfree.com";
+$username = "if0_38165555";
+$password = "manoka877";
+$dbname = "if0_38165555_user_db"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -44,13 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'kelemenjanos400@gmail.com'; 
-                $mail->Password = 'tbws adir tbrk tbgu'; 
+                $mail->Username = 'demoncarsweb@gmail.com'; 
+                $mail->Password = 'bicu xoan ysot bfdc'; 
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
                 $mail->CharSet = 'UTF-8'; 
-                $mail->setFrom('kelemenjanos400@gmail.com', 'Admin');
+                $mail->setFrom('demoncarsweb@gmail.com', 'Admin');
                 $mail->addAddress($email);
 
                 $mail->isHTML(true);

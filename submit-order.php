@@ -6,10 +6,10 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; 
 
-$servername = "sql204.infinityfree.com";
-$username = "if0_38141147";
-$password = "manoka87";
-$dbname = "if0_38141147_demoncars_db";
+$servername = "sql302.infinityfree.com";
+$username = "if0_38165555";
+$password = "manoka877";
+$dbname = "if0_38165555_demoncars_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 $conn->set_charset("utf8");
@@ -76,13 +76,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';  
             $mail->SMTPAuth = true;
-            $mail->Username = 'kelemenjanos400@gmail.com';  
-            $mail->Password = 'tbws adir tbrk tbgu'; 
+            $mail->Username = 'demoncarsweb@gmail.com';  
+            $mail->Password = 'bicu xoan ysot bfdc'; 
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
             
-            $mail->setFrom('kelemenjanos400@gmail.com', 'DemonCars');
+            $mail->setFrom('demoncarsweb@gmail.com', 'DemonCars');
             $mail->addAddress($to);  
             $mail->addReplyTo('support@demoncars.hu', 'Support');
             $mail->CharSet = 'UTF-8';
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->send();
 
             
-            $admin_email = 'kelemenjanos400@gmail.com';  
+            $admin_email = 'demoncarsweb@gmail.com';  
             $mail->clearAddresses();
             $mail->addAddress($admin_email);
             $mail->Subject = "Új rendelés: #$order_id";

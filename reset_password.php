@@ -1,8 +1,13 @@
 <?php
-$servername = "sql204.infinityfree.com";
-$username = "if0_38141147";
-$password = "manoka87";
-$dbname = "if0_38141147_user_db";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; 
+
+$servername = "sql302.infinityfree.com";
+$username = "if0_38165555";
+$password = "manoka877";
+$dbname = "if0_38165555_user_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -44,6 +49,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_stmt->bind_param("ss", $hashed_password, $email);
 
         if ($update_stmt->execute()) {
+            
+            $mail = new PHPMailer(true);
+
+            try {
+                
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com'; 
+                $mail->SMTPAuth = true;
+                $mail->Username = 'demoncarsweb@gmail.com'; 
+                $mail->Password = 'bicu xoan ysot bfdc'; 
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->Port = 465;
+
+                
+                $mail->CharSet = 'UTF-8'; 
+                
+                
+                $mail->setFrom('no-reply@webshop.hu', 'Webshop');
+                $mail->addAddress($email); 
+                $mail->Subject = 'Jelszó módosítása sikeresen megtörtént';
+                $mail->Body = "Kedves Felhasználó,\n\nA jelszavát sikeresen megváltoztattuk. Ha nem Ön kérte a jelszó módosítását, kérjük, lépjen kapcsolatba velünk.\n\nÜdvözlettel,\nDemoncars Webshop csapat";
+
+                
+                $mail->send();
+                echo '<div class="success">A jelszó sikeresen megváltozott. Egy emailt küldtünk a változtatásról.</div>';
+            } catch (Exception $e) {
+                echo '<div class="error">Hiba történt az értesítő email küldése közben: ' . $mail->ErrorInfo . '</div>';
+            }
+
+            
             header("Location: index.html");
             exit();
         } else {

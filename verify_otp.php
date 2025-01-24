@@ -1,8 +1,8 @@
 <?php
-$servername = "sql204.infinityfree.com";
-$username = "if0_38141147";
-$password = "manoka87";
-$dbname = "if0_38141147_user_db";
+$servername = "sql302.infinityfree.com";
+$username = "if0_38165555";
+$password = "manoka877";
+$dbname = "if0_38165555_user_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Ellenőrzés</title>
-    <link rel="stylesheet" href="css/forgott.css">
+    <link rel="stylesheet" href="css/forgot.css">
     <script>
         function hideAlert() {
             setTimeout(function() {
