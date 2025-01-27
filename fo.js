@@ -250,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 transition: all 0.3s;
                 margin: 0 auto;
             }
+            
 
             @media (min-width: 768px) {
                 .contact-form {
@@ -321,7 +322,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             <h3>Fiókinformáció</h3>
                             <p>Felhasználónév: ${localStorage.getItem("username") || "N/A"}</p>
                             <p>Email: ${data.email || "N/A"}</p>
-                        `);
+                            <style>
+                                
+                                p {
+                                    margin-bottom: 25px;
+                                    margin-top:-10px;
+                                }
+                            </style>
+                            `
+                        );
                     } else {
                         alert("Hiba történt a fiók információinak lekérése során.");
                     }
@@ -331,6 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert("Nem sikerült kapcsolatot létesíteni a szerverrel.");
                 });
         });
+        
     }
 
     function createModal(content, onLoad = null) {

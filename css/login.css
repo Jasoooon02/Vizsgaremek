@@ -363,7 +363,38 @@ body{
             font-size: 14px;
           }
         }
-    
+        @media only screen and (max-width: 510px) {
+          body {
+            
+            font-size: 14px;
+          }
+          .login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 350px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(24, 20, 20, 0.987);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            border-radius: 10px;
+        }
+          a {
+            font-size:18px;
+            line-height: 1.5em;
+            word-spacing: 0.5em;
+            letter-spacing: 0.1em;
+            
+            display: inline;
+            font-weight: bold;
+            padding: 7px;
+            color: white;
+          }
+        .ham-menu{
+          font-size: small;
+        }
+        }
         
     @media only screen and (max-width: 640px) {
           body {

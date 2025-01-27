@@ -190,6 +190,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      z-index: 1;
      }
      footer{
        position:fixed;
@@ -340,7 +342,7 @@
     max-width: 500px; 
     max-height: 70vh; 
     overflow-y: auto; 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Árnyék */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
     margin-top: 50px;
     justify-content: center;
     align-items: center;
@@ -494,4 +496,123 @@
     }
   }
   }
+.side-bar {
+  width: 450px;
+  height: 1100px;
+  position: fixed;
+}
+
+.side-bar.left {
+  left: -10px;
+  top: 0px;
+  background-image: url('../exploded_diagram2.jpg');
+  background-size: 400px 300px;
+  background-repeat: repeat-y;
+}
+
+.side-bar.right {
+  right: -55px;
+  top: 0px;
+  background-image: url('../exploded_diagram.jpg');
+  background-size: 400px 300px;
+  background-repeat: repeat-y;
+}
+
+@media screen and (max-width: 1560px) {
+  .side-bar {
+    width: 400px;
+    height: 1100px;
+    position: fixed;
+  }
   
+  .side-bar.left {
+   
+    top: 0px;
+    background-image: url('../exploded_diagram2.jpg');
+    background-size: 350px 250px;
+    background-repeat: repeat-y;
+  }
+  
+  .side-bar.right {
+    right:-55px;
+    top: 0px;
+    background-image: url('../exploded_diagram.jpg');
+    background-size: 350px 250px;
+    background-repeat: repeat-y;
+  }
+}
+
+@media screen and (max-width: 1475px) {
+  .side-bar {
+    width: 350px;
+    height: 1100px;
+    position: fixed;
+  }
+  
+  .side-bar.left {
+   
+    top: 0px;
+    background-image: url('../exploded_diagram2.jpg');
+    background-size: 300px 200px;
+    background-repeat: repeat-y;
+  }
+  
+  .side-bar.right {
+    right:-55px;
+    top: 0px;
+    background-image: url('../exploded_diagram.jpg');
+    background-size: 300px 200px;
+    background-repeat: repeat-y;
+  }
+}
+@media screen and (max-width: 1375px) {
+  .side-bar {
+    width: 300px;
+    height: 1100px;
+    position: fixed;
+  }
+  
+  .side-bar.left {
+   
+    top: 0px;
+    background-image: url('../exploded_diagram2.jpg');
+    background-size: 250px 150px;
+    background-repeat: repeat-y;
+  }
+  
+  .side-bar.right {
+    right:-55px;
+    top: 0px;
+    background-image: url('../exploded_diagram.jpg');
+    background-size: 250px 150px;
+    background-repeat: repeat-y;
+  }
+}
+@media screen and (max-width: 1270px) {
+  .side-bar {
+    width: 250px;
+    height: 1100px;
+    position: fixed;
+  }
+  
+  .side-bar.left {
+   
+    top: 0px;
+    background-image: url('../exploded_diagram2.jpg');
+    background-size: 200px 100px;
+    background-repeat: repeat-y;
+  }
+  
+  .side-bar.right {
+    right:-55px;
+    top: 0px;
+    background-image: url('../exploded_diagram.jpg');
+    background-size: 200px 100px;
+    background-repeat: repeat-y;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .side-bar {
+    display: none;
+}
+}
