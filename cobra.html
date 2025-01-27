@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/e39.css">
+    <title>DemonCars</title>
+</head>
+<body>
+<div class="side-bar left"></div>
+<div class="main-content">
+<header>
+    <p class="sz">DEMONCARS</p>
+    <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
+</header>
+<input type="checkbox" id="ham-menu">
+  <label for="ham-menu">
+    <div class="hide-des">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </div>
+  </label>
+  <div class="full-page-green"></div>
+  <div class="ham-menu">
+    <ul class="centre-text bold-text">
+      <li><a href="fo.html">Kezdőlap</a></li>
+    </ul>
+  </div>
+
+<div class="container" id="car-page">
+    <div class="car-image">
+        <div class="slide-gallery">
+            <img src="/img/cobra_black.jpg" alt="Ford Shelby Cobra Fekete" class="car-slide" data-color="Fekete">
+            <img src="/img/cobra_white.jpg" alt="Ford Shelby Cobra Fehér" class="car-slide active" data-color="Fehér">
+            <img src="/img/cobra_red.jpg" alt="Ford Shelby Cobra Piros" class="car-slide" data-color="Piros">
+            <img src="/img/cobra_blue.jpg" alt="Ford Shelby Cobra Kék" class="car-slide" data-color="Kék">
+            <img src="/img/cobra_gray.jpg" alt="Ford Shelby Cobra Szürke" class="car-slide" data-color="Szürke">
+        </div>
+    </div>
+    <div class="car-details">
+        <h1 id="car-name">Ford Shelby Cobra</h1>
+        <div class="description">
+            <p>
+                A Ford Shelby Cobra egy legendás sportautó, amely az erő, a sebesség és az amerikai autóipar ikonikus hagyatékát testesíti meg.
+                A könnyű, alumínium karosszéria és a nagy teljesítményű V8-as motor kombinációja elképesztő gyorsulást és vezetési élményt kínál.
+                Az 1960-as években Carroll Shelby közreműködésével készült, és azóta is a klasszikus autók világának egyik legkeresettebb darabja.
+                Egyedi formatervezése és exkluzív státusza a gyűjtők és autórajongók egyik legnagyobb kedvencévé tette.
+            </p>
+        </div>
+        <div class="options">
+            <div class="dropdowns">
+                <div class="dropdown">
+                    <label for="color">Szín:</label>
+                    <select id="color">
+                        <option value="Fehér">Fehér</option>
+                        <option value="Fekete">Fekete</option>
+                        <option value="Piros">Piros</option>
+                        <option value="Kék">Kék</option>
+                        <option value="Szürke">Szürke</option>
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label for="engine">Motor:</label>
+                    <select id="engine">
+                        <option value="benzin 6.4 V8"data-price="78 960 000">Benzin 6.4 V8 - 78 960 000 Ft</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="price">
+            <p id="car-price">78 960 000 Ft-tól</p>
+            <button id="add-to-cart-btn">Kosárba</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="cart-modal" class="cart-modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Kosár tartalma</h2>
+        <ul id="cart-items"></ul>
+        <div id="total-price" class="total-price"></div>
+        <button id="checkout-btn">Tovább a fizetéshez</button>
+    </div>
+</div>
+</div>
+<div class="side-bar right"></div>
+
+<script src="cart.js"></script>
+<script src="carslide.js"></script>
+<script>
+document.getElementById('engine').addEventListener('change', function() {
+    const name = document.getElementById('car-name').textContent;
+    const engine = this.value;
+
+    fetch(`get_price.php?name=${encodeURIComponent(name)}&engine=${encodeURIComponent(engine)}`)
+        .then(response => response.text())
+        .then(price => {
+            document.getElementById('car-price').textContent = price + ' Ft';
+        })
+        .catch(error => console.error('Error:', error));
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    checkoutBtn.addEventListener('click', function () {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+        if (isLoggedIn === 'true') {
+            window.location.href = 'checkout.html';
+        } else {
+            alert('Először jelentkezz be, hogy folytathasd a vásárlást!');
+            window.location.href = 'index.html';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
