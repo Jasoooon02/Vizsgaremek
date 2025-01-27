@@ -492,7 +492,7 @@
   .side-bar.left {
     left: -10px;
     top: 0px;
-    background-image: url('../exploded_diagram2.jpg');
+    background-image: url('/img/exploded_diagram2.jpg');
     background-size: 400px 300px;
     background-repeat: repeat-y;
   }
@@ -500,7 +500,7 @@
   .side-bar.right {
     right: -55px;
     top: 0px;
-    background-image: url('../exploded_diagram.jpg');
+    background-image: url('/img/exploded_diagram.jpg');
     background-size: 400px 300px;
     background-repeat: repeat-y;
   }
@@ -515,7 +515,7 @@
     .side-bar.left {
      
       top: 0px;
-      background-image: url('../exploded_diagram2.jpg');
+      background-image: url('/img/exploded_diagram2.jpg');
       background-size: 350px 250px;
       background-repeat: repeat-y;
     }
@@ -523,7 +523,7 @@
     .side-bar.right {
       right:-55px;
       top: 0px;
-      background-image: url('../exploded_diagram.jpg');
+      background-image: url('/img/exploded_diagram.jpg');
       background-size: 350px 250px;
       background-repeat: repeat-y;
     }
@@ -539,7 +539,7 @@
     .side-bar.left {
      
       top: 0px;
-      background-image: url('../exploded_diagram2.jpg');
+      background-image: url('/img/exploded_diagram2.jpg');
       background-size: 300px 200px;
       background-repeat: repeat-y;
     }
@@ -547,7 +547,7 @@
     .side-bar.right {
       right:-55px;
       top: 0px;
-      background-image: url('../exploded_diagram.jpg');
+      background-image: url('/img/exploded_diagram.jpg');
       background-size: 300px 200px;
       background-repeat: repeat-y;
     }
@@ -562,7 +562,7 @@
     .side-bar.left {
      
       top: 0px;
-      background-image: url('../exploded_diagram2.jpg');
+      background-image: url('/img/exploded_diagram2.jpg');
       background-size: 250px 150px;
       background-repeat: repeat-y;
     }
@@ -570,7 +570,7 @@
     .side-bar.right {
       right:-55px;
       top: 0px;
-      background-image: url('../exploded_diagram.jpg');
+      background-image: url('/img/exploded_diagram.jpg');
       background-size: 250px 150px;
       background-repeat: repeat-y;
     }
@@ -585,7 +585,7 @@
     .side-bar.left {
      
       top: 0px;
-      background-image: url('../exploded_diagram2.jpg');
+      background-image: url('/img/exploded_diagram2.jpg');
       background-size: 200px 100px;
       background-repeat: repeat-y;
     }
@@ -593,7 +593,7 @@
     .side-bar.right {
       right:-55px;
       top: 0px;
-      background-image: url('../exploded_diagram.jpg');
+      background-image: url('/img/exploded_diagram.jpg');
       background-size: 200px 100px;
       background-repeat: repeat-y;
     }
