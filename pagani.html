@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/pagani.css">
+    <title>DemonCars</title>
+    
+</head>
+
+<body>
+
+<div class="side-bar left"></div>
+<div class="main-content">
+    <header>
+        <p class="sz">DEMONCARS</p>
+        <button id="cart-btn" class="cart-btn">🛒 Kosár</button>
+    </header>
+    <input type="checkbox" id="ham-menu">
+  <label for="ham-menu">
+    <div class="hide-des">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </div>
+  </label>
+  <div class="full-page-green"></div>
+  <div class="ham-menu">
+    <ul class="centre-text bold-text">
+      <li><a href="fo.html">Kezdőlap</a></li>
+    </ul>
+  </div>
+
+    <div class="container" id="car-page">
+        <div class="car-image">
+            <div class="slide-gallery">
+                <img src="pagani_black.jpg" alt="Pagani Huayra Fekete" class="car-slide" data-color="Fekete">
+                <img src="pagani_white.jpg" alt="Pagani Huayra Fehér" class="car-slide active" data-color="Fehér">
+                <img src="pagani_red.jpg" alt="Pagani Huayra Piros" class="car-slide" data-color="Piros">
+                <img src="pagani_blue.jpg" alt="Pagani Huayra Kék" class="car-slide" data-color="Kék">
+                <img src="pagani_gray.jpg" alt="Pagani Huayra Szürke" class="car-slide" data-color="Szürke">
+            </div>
+        </div>
+        <div class="car-details">
+            <h1 id="car-name">Pagani Huayra</h1>
+            <div class="description">
+                <p>
+                    A Pagani Huayra egy lenyűgöző szupersportautó, amely futurisztikus dizájnjával, 
+                    kézműves részleteivel és a Mercedes-AMG által készített V12-es motorjával páratlan gyorsulást és teljesítményt biztosít, 
+                    miközben belső tere a luxust és a technológiát egyesíti a vezető személyre szabott élményében.
+                    Az autó aerodinamikai kialakítása és innovatív megoldásai lehetővé teszik, hogy minden vezetési pillanat igazi élménnyé váljon.
+                </p>
+            </div>
+            <div class="options">
+                <div class="dropdowns">
+                    <div class="dropdown">
+                        <label for="color">Szín:</label>
+                        <select id="color">
+                            <option value="Fehér">Fehér</option>
+                            <option value="Fekete">Fekete</option>
+                            <option value="Piros">Piros</option>
+                            <option value="Kék">Kék</option>
+                            <option value="Szürke">Szürke</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="engine">Motor:</label>
+                        <select id="engine">
+                            <option value="benzin V12 " data-price="895 400 000">Benzin V12  - 895 400 000 Ft</option>
+                            <option value="benzin V12 Twin Turbo" data-price="985 980 000">Benzin V12 Twin Turbo - 985 980 000 Ft</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price">
+                <p id="car-price">895 400 000 Ft-tól</p>
+                <button id="add-to-cart-btn">Kosárba</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-modal" class="cart-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Kosár tartalma</h2>
+            <ul id="cart-items"></ul>
+            <div id="total-price" class="total-price"></div>
+            <button id="checkout-btn">Tovább a fizetéshez</button>
+        </div>
+    </div>
+</div>
+<div class="side-bar right"></div>
+
+<script src="cart.js"></script>
+<script src="carslide.js"></script>
+<script>
+    document.getElementById('engine').addEventListener('change', function() {
+        const name = document.getElementById('car-name').textContent;
+        const engine = this.value;
+
+        fetch(`get_price.php?name=${encodeURIComponent(name)}&engine=${encodeURIComponent(engine)}`)
+            .then(response => response.text())
+            .then(price => {
+                document.getElementById('car-price').textContent = price + ' Ft';
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        checkoutBtn.addEventListener('click', function () {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if (isLoggedIn === 'true') {
+                window.location.href = 'checkout.html';
+            } else {
+                alert('Először jelentkezz be, hogy folytathasd a vásárlást!');
+                window.location.href = 'index.html';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
