@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/golf.css">
+    <link rel="stylesheet" href="css/focus.css">
     <title>DemonCars</title>
     
 </head>
@@ -74,14 +74,14 @@
                             <option value="benzin 1.6" data-price="1 915 000">Benzin 1.6 - 1 915 000 Ft</option>
                             <option value="benzin 1.8" data-price="2 285 000">Benzin 1.8 - 2 285 000 Ft</option>
                             <option value="benzin 2.0" data-price="2 960 000">Benzin 2.0 - 2 960 000 Ft</option>
-                            <option value="dizel 1.8 TDDI" data-price="2 765 000">Dízel 1.8 TDDI - 2 765 000 Ft</option>
+                            <option value="dizel 1.8 TDI" data-price="2 765 000">Dízel 1.8 TDDI - 2 765 000 Ft</option>
                         </select>
                     </div>
                 </div>
             </div>
 
             <div class="price">
-                <p id="car-price">1 775 000 Ft-tól</p>
+                <p id="car-price" contenteditable="false">1 775 000 Ft-tól</p>
                 <button id="add-to-cart-btn">Kosárba</button>
             </div>
         </div>
@@ -102,6 +102,7 @@
 <script src="cart.js"></script>
 <script src="carslide.js"></script>
 <script>
+    
     document.getElementById('engine').addEventListener('change', function() {
         const name = document.getElementById('car-name').textContent;
         const engine = this.value;

@@ -5,57 +5,56 @@ document.addEventListener("DOMContentLoaded", function () {
     const addToCartBtn = document.getElementById('add-to-cart-btn');
     const cartItemsList = document.getElementById('cart-items');
     const totalPriceElement = document.getElementById('total-price');
-    const priceElement = document.getElementById('car-price');
     const colorSelect = document.getElementById("color");
     const carSlides = document.querySelectorAll(".car-slide");
 
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-    
     window.onload = function() {
         updateCartDisplay();
-        updatePrice();
     };
 
-   
     cartBtn.addEventListener('click', () => {
         updateCartDisplay();
         cartModal.style.display = 'flex';
     });
 
-    
     closeBtn.addEventListener('click', () => {
         cartModal.style.display = 'none';
     });
 
-    
     addToCartBtn.addEventListener('click', () => {
         const carName = document.querySelector('.car-details h1').innerText;
-        const carPrice = priceElement.innerText.replace(/\D/g, ""); 
-
-        
         const color = colorSelect.value;
         const engine = document.getElementById('engine').value;
 
-        
         const activeSlide = Array.from(carSlides).find(slide => slide.getAttribute("data-color") === color);
         const carImage = activeSlide ? activeSlide.src : '';
 
-        const cartItem = {
-            name: carName,
-            image: carImage,
-            price: parseInt(carPrice),
-            color: color,
-            engine: engine
-        };
+       
+        fetch(`get_price.php?name=${encodeURIComponent(carName)}&engine=${encodeURIComponent(engine)}`)
+            .then(response => response.text())
+            .then(price => {
+                if (price.includes("Hiba")) {
+                    alert("Hiba történt az ár lekérésekor.");
+                    return;
+                }
 
-        
-        cartItems.push(cartItem);
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        updateCartDisplay();
+                const cartItem = {
+                    name: carName,
+                    image: carImage,
+                    price: parseInt(price), 
+                    color: color,
+                    engine: engine
+                };
+
+                cartItems.push(cartItem);
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                updateCartDisplay();
+            })
+            .catch(error => console.error('Hiba az ár lekérésekor:', error));
     });
 
-    
     document.getElementById('engine').addEventListener('change', updatePrice);
 
     function updatePrice() {
@@ -63,10 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedOption = engineSelect.options[engineSelect.selectedIndex];
         const price = selectedOption.getAttribute('data-price');
         
+        const priceElement = document.getElementById('car-price');
         priceElement.innerText = price ? `${price.replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Ft` : 'N/A';
     }
 
-    
     function updateCartDisplay() {
         cartItemsList.innerHTML = '';
         let totalPrice = 0;
@@ -84,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         totalPriceElement.innerText = `Összesen: ${totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Ft`;
 
-        
         const removeButtons = document.querySelectorAll('.remove-item');
         removeButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -94,14 +92,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-   
     function removeItem(index) {
         cartItems.splice(index, 1);
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         updateCartDisplay();
     }
 
-    
     colorSelect.addEventListener("change", function () {
         const selectedColor = colorSelect.value;
 
