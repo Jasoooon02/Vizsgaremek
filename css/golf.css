@@ -616,4 +616,10 @@
       display: none;
   }
   }
-  
+  .logo{
+    width: 160px;
+    height: 80px;
+    margin-left: -95px;
+    margin-right: -45px;
+    margin-bottom: -5px;
+  }
