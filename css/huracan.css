@@ -6,8 +6,10 @@
   font-size: 100px;
   margin: auto;
   text-align: center;
+  justify-content: center;
   color: #8f0000;
   font-family: Raptor;
+  padding-left: 110px;
 }
 :root {
 --home-bg-color: rgb(0 0 0 / 86%);
@@ -184,15 +186,15 @@
           text-align: center;
         }
   
-        header{
-          height: 85px;
-          background-color: var(--home-bg-color);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          position: relative;
-          z-index: 1;
-         }
+   header{
+    height: 85px;
+    background-color: var(--home-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+   }
    footer{
      position:fixed;
      bottom: 0;
@@ -290,8 +292,19 @@ p{
     border-radius: 8px;
 }
 .sz{
-  font-size: 50px;
+  font-size: 30px;
 }
+label[for="ham-menu"] {
+  display: block;
+  position: fixed;
+  top: 24px;
+  left: 20px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  background-color: var(--home-bg-color);
+  border-radius: 15px;
+  border: 2px solid var(--border-color);}
 .description{
   font-size:small;
   width: 300px;
@@ -330,7 +343,7 @@ p{
   max-width: 500px; 
   max-height: 70vh; 
   overflow-y: auto; 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Árnyék */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
   margin-top: 50px;
   justify-content: center;
   align-items: center;
@@ -449,6 +462,7 @@ p{
   .sz {
       font-size: 60px;  
   }
+  
   .description {
       font-size: 16px; 
       width: 90%; 
@@ -512,6 +526,7 @@ p{
     height: 1100px;
     position: fixed;
   }
+  
   
   .side-bar.left {
    
@@ -602,12 +617,52 @@ p{
 @media screen and (max-width: 1170px) {
   .side-bar {
     display: none;
+    
+}
+
+}
+@media screen and (min-width: 800px) and (max-width: 2560px) {
+  .logo{
+    width: 160px;
+    height: 85px;
+    margin-left: -95px;
+    margin-right: -45px;
+    margin-bottom: -5px;
+  }
+
+}
+@media only screen and (min-width: 440px) and (max-width: 800px) {
+  .logo {
+  width: 100px;
+  height: 60px;
+  margin-left: -57px;
+  margin-right: -27px;
+  margin-bottom: -10px;
+}}
+
+@media only screen and (min-width: 440px) and (max-width: 639px) {
+.logo {
+    width: 50px;
+    height: 30px;
+    margin-left: -27px;
+    margin-right: -14px;
+    margin-bottom: -5px;
+}
+.sz{
+  margin: auto;
+  text-align: center;
+  font-size: 30px;
 }
 }
-.logo{
-  width: 160px;
-  height: 85px;
-  margin-left: -95px;
-  margin-right: -45px;
-  margin-bottom: -5px;
+@media only screen and (min-width: 300px) and (max-width: 439px) {
+.logo {
+  width: 40px;
+  height: 20px;
+  margin-left: -20px;
+  margin-right: -11px;
+  margin-bottom: -3px;
+}
+.sz{
+  font-size: 20px;
+}
 }
