@@ -263,20 +263,52 @@ body{
     display: grid;
 }
 
-@media only screen and (max-width: 400px) {
-  .sz{
-    font-size: 50px;
-    margin-left: 90px;
+@media screen and (min-width: 1007px) and (max-width: 2560px) {
+  .logo{
+    width: 160px;
+    height: 85px;
+    margin-left: -95px;
+    margin-right: -45px;
+    margin-bottom: -5px;
   }
 
-
 }
-@media only screen and (max-width: 380px) {
-  .sz{
-    font-size: 40px;
-    margin-left: 90px;
+@media only screen and (min-width: 440px) and (max-width: 1007px) {
+  .logo {
+    width: 150px;
+    height: 75px;
+    margin-left: -83px;
+    margin-right: -45px;
+    margin-bottom: -10px;
+}}
+
+@media only screen and (min-width: 440px) and (max-width: 640px) {
+  .logo {
+      width: 80px;
+      height: 45px;
+      margin-left: -47px;
+      margin-right: -23px;
+      margin-bottom: -6px;
   }
 
-
+.sz{
+  margin: auto;
+  text-align: center;
+  font-size: 50px;
+  margin-top: 20px;
 }
+}
+@media only screen and (min-width: 300px) and (max-width: 439px) {
+  .logo {
+      width: 60px;
+      height: 33px;
+      margin-left: -33px;
+      margin-right: -16px;
+      margin-bottom: -5px;
+  }
 
+.sz{
+  font-size: 35px;
+  margin-top: 20px;
+}
+}

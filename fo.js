@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
         
                     .contact-form textarea {
-                        resize: vertical;
+                        resize: none;
                         min-height: 100px;
                     }
         
@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         overflow: hidden;
                         display: block;
                         margin: 0 auto;
+                        height:40px;
                     }
         
                     .contact-form button::before {
@@ -234,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             .contact-form textarea {
-                resize: vertical;
+                resize: none;
                 min-height: 100px;
             }
 
@@ -249,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 font-weight: 600;
                 transition: all 0.3s;
                 margin: 0 auto;
+                height:40px;
             }
             
 
