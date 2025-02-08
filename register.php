@@ -17,17 +17,24 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $input_username = trim($_POST['username']);
     $input_password = trim($_POST['password']);
+    $input_confirm_password = trim($_POST['confirm_password']);
     $input_email = trim($_POST['email']);
 
-    if (empty($input_username) || empty($input_password) || empty($input_email)) {
+    if (empty($input_username) || empty($input_password) || empty($input_confirm_password) || empty($input_email)) {
         echo "<script>alert('Minden mező kitöltése kötelező!');</script>";
     } elseif (!filter_var($input_email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Érvénytelen email cím!');</script>";
-    } else {
-
+    } elseif ($input_password !== $input_confirm_password) {
+        echo "<script>
+                alert('A jelszavak nem egyeznek!');
+                setTimeout(function() {
+                    window.location.href = 'index.html';
+                }, 1000);
+              </script>";
+    }
+     else {
         $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
         $stmt->bind_param("ss", $input_username, $input_email);
         $stmt->execute();
@@ -36,19 +43,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             echo "<script>alert('A felhasználónév vagy az email már használatban van!'); window.location.href = 'index.html';</script>";
         } else {
-
             $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
             $hashed_password = password_hash($input_password, PASSWORD_DEFAULT);
             $stmt->bind_param("sss", $input_username, $hashed_password, $input_email);
 
             if ($stmt->execute()) {
-
                 $to = $input_email;
                 $subject = "Sikeres regisztráció";
                 $message = "Kedves " . $input_username . ",\n\nKöszönjük, hogy regisztrált oldalunkon!\nÜdvözlünk a közösségben.\n\nÜdvözlettel,\nA Demoncars Weboldal Csapata";
-
+                
                 $mail = new PHPMailer(true);
-
                 try {
                     $mail->isSMTP();
                     $mail->Host = 'smtp.gmail.com';
@@ -57,16 +61,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->Password = 'bicu xoan ysot bfdc';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
-
+                    
                     $mail->setFrom('demoncarsweb@gmail.com', 'Weboldal');
                     $mail->addAddress($to);
                     $mail->addReplyTo('support@yourdomain.com', 'Support');
                     $mail->CharSet = 'UTF-8';
-
+                    
                     $mail->isHTML(false);
                     $mail->Subject = $subject;
                     $mail->Body = $message;
-
+                    
                     $mail->send();
                     echo "<script>alert('Sikeres regisztráció! Ellenőrizze az emailjeit.'); window.location.href = 'index.html';</script>";
                 } catch (Exception $e) {
