@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 try {
-    
     $conn = new mysqli('sql302.infinityfree.com', 'if0_38165555', 'manoka877', 'if0_38165555_user_db');
     $conn->set_charset("utf8");
 
@@ -23,10 +22,17 @@ try {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            echo json_encode([
+            $response = [
                 "success" => true,
                 "email" => $row['email']
-            ]);
+            ];
+            
+            // Ha az admin a felhasználó, akkor jelenjen meg a toggle button
+            if ($username === 'admin') {
+                $response["showToggleButton"] = true;
+            }
+            
+            echo json_encode($response);
         } else {
             echo json_encode(["success" => false, "message" => "Felhasználó nem található."]);
         }
