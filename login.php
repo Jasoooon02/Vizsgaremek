@@ -3,7 +3,7 @@ session_start();
 $servername = "sql302.infinityfree.com";
 $username = "if0_38165555"; 
 $password = "manoka877"; 
-$dbname = "if0_38165555_user_db"; 
+$dbname = "if0_38165555_demoncars_db"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
