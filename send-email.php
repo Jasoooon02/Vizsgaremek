@@ -1,9 +1,9 @@
 <?php
-// Hibaüzenetek bekapcsolása
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// A többi kód következik...
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

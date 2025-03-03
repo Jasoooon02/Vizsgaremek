@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 try {
-    $conn = new mysqli('sql302.infinityfree.com', 'if0_38165555', 'manoka877', 'if0_38165555_demoncars_db');
+    $conn = new mysqli('mysql80.r3.websupport.hu', 'if0_38165555', 'manoka877', 'demoncars_db');
     $conn->set_charset("utf8");
 
     if (isset($_SESSION['username'])) {

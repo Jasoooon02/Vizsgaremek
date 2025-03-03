@@ -1,9 +1,9 @@
 <?php
 session_start();
-$servername = "sql302.infinityfree.com";
+$servername = "mysql80.r3.websupport.hu";
 $username = "if0_38165555"; 
 $password = "manoka877"; 
-$dbname = "if0_38165555_demoncars_db"; 
+$dbname = "demoncars_db"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
