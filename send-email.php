@@ -1,45 +1,48 @@
 <?php
+// Hibaüzenetek bekapcsolása
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// A többi kód következik...
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
 require 'vendor/autoload.php';
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
+    $email = $_POST['email'] ?? '';
+    $message = $_POST['message'] ?? '';
+    $to = 'demoncarsweb@gmail.com';
+    $subject = 'Kapcsolat Üzenet';
 
-    $to = $data['to'];
-    $subject = $data['subject'];
-    $email = $data['email'];
-    $message = $data['message'];
+    if (empty($email) || empty($message)) {
+        echo 'Hiba: Az összes mező kitöltése kötelező!';
+        exit();
+    }
 
-    
     $mail = new PHPMailer(true);
 
     try {
-        
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'demoncarsweb@gmail.com'; 
-        $mail->Password = 'bicu xoan ysot bfdc';      
+        $mail->Password = 'zufb koea rjur sysg';  
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        
         $mail->CharSet = 'UTF-8';
-
-        
         $mail->setFrom($email, 'Kapcsolat Üzenet');
         $mail->addAddress($to);
         $mail->addReplyTo($email);
 
-        
         $mail->isHTML(true);
         $mail->Subject = $subject;
 
-        
         $formattedMessage = "
             <p><strong>Üzenet:</strong></p>
             <p>" . nl2br(htmlspecialchars($message)) . "</p>
@@ -47,15 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p><strong>Válasz cím:</strong> <a href='mailto:$email'>$email</a></p>
         ";
 
-        $mail->Body = $formattedMessage; 
-        $mail->AltBody = "Üzenet: $message\n\nVálasz cím: $email"; 
+        $mail->Body = $formattedMessage;
+        $mail->AltBody = "Üzenet: $message\n\nVálasz cím: $email";
 
-        
         $mail->send();
-        echo json_encode(['success' => true, 'message' => 'Üzenet elküldve!']);
+        echo 'success';  
     } catch (Exception $e) {
-        echo json_encode(['success' => false, 'message' => 'Hiba: ' . $mail->ErrorInfo]);
+        echo 'Hiba: ' . $mail->ErrorInfo;
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Nem érvényes kérés']);
+    echo 'Hiba: Nem megfelelő kérés';
 }

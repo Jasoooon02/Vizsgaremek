@@ -27,7 +27,7 @@ try {
                 "email" => $row['email']
             ];
             
-            // Ha az admin a felhasználó, akkor jelenjen meg a toggle button
+            
             if ($username === 'admin') {
                 $response["showToggleButton"] = true;
             }

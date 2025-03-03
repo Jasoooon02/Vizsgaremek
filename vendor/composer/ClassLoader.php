@@ -448,12 +448,7 @@ class ClassLoader
         if ($this->classMapAuthoritative || isset($this->missingClasses[$class])) {
             return false;
         }
-        if (null !== $this->apcuPrefix) {
-            $file = apcu_fetch($this->apcuPrefix.$class, $hit);
-            if ($hit) {
-                return $file;
-            }
-        }
+       
 
         $file = $this->findFileWithExtension($class, '.php');
 

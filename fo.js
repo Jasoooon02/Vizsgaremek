@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     menuContainer.style.display = "none";
     document.body.appendChild(menuContainer);
 
-
     const style = document.createElement('style');
     style.innerHTML = `
         .modal-content {
@@ -221,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         });
 
-
         document.getElementById("contact").addEventListener("click", () => {
             createModal(
                 `<h3>Kapcsolat</h3>
@@ -280,6 +278,38 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.remove();
         }
     }
+
+    // Handle contact form submission
+    document.body.addEventListener("submit", function (e) {
+        if (e.target.id === "contact-form") {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Send form data to send-email.php
+            fetch("send-email.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'success') {
+                    alert("Az üzenet sikeresen elküldve!");
+                    closeModal(); // Close modal after success
+                } else {
+                    alert("Hiba történt az üzenet küldésekor: " + data);
+                }
+            })
+            .catch(error => {
+                console.error("Hiba történt:", error);
+                alert("Nem sikerült kapcsolatot létesíteni a szerverrel.");
+            });
+        }
+    });
 
     userIcon.addEventListener("click", toggleMenu);
     setupMenu();
