@@ -10,4 +10,3 @@ app.get('/api/products/:category', (req, res) => {
     });
 });
 
-//ez a tárolt eljáráshóz kell majd

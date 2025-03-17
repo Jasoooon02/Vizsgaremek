@@ -52,6 +52,9 @@
   <div class="register-box">
     <form action="register.php" method="POST" id="register-form">
         <div class="user-box">
+            <input type="email" id="reg-email" name="email" placeholder="Email cím" required>
+        </div>
+        <div class="user-box">
             <input type="text" id="reg-username" name="username" placeholder="Felhasználónév" required>
         </div>
         <div class="user-box">
@@ -59,9 +62,6 @@
         </div>
         <div class="user-box">
             <input type="password" id="confirm-password" name="confirm_password" placeholder="Jelszó megerősítése" required>
-        </div>
-        <div class="user-box">
-            <input type="email" id="reg-email" name="email" placeholder="Email cím" required>
         </div>
         <button type="submit" class="button">Regisztráció</button>
     </form>

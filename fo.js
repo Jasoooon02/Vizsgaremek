@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Handle contact form submission
+    
     document.body.addEventListener("submit", function (e) {
         if (e.target.id === "contact-form") {
             e.preventDefault();
@@ -288,7 +288,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const email = document.getElementById("email").value;
             const message = document.getElementById("message").value;
 
-            // Send form data to send-email.php
+            
             fetch("send-email.php", {
                 method: "POST",
                 headers: {
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 if (data === 'success') {
                     alert("Az üzenet sikeresen elküldve!");
-                    closeModal(); // Close modal after success
+                    closeModal(); 
                 } else {
                     alert("Hiba történt az üzenet küldésekor: " + data);
                 }
