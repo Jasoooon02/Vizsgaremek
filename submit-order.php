@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $payment_method = $_POST['payment-method'];
     $total_price = $_POST['total_price'];
 
+
     $sql = "INSERT INTO orders (name, email, address, phone, payment_method, total_price) 
             VALUES ('$name', '$email', '$address', '$phone', '$payment_method', '$total_price')";
 
