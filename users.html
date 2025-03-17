@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendelések</title>
-    <link rel="stylesheet" href="css/rendelesek.css"> 
+    <title>Felhasználók</title>
+    <link rel="stylesheet" href="css/users.css"> 
 
     <style>
         
@@ -29,81 +29,69 @@
     </style>
 </head>
 <body>
+    <h1>Felhasználók</h1>
     <button class="back-button" onclick="window.location.href = 'fo.html';">Vissza</button>
-
-    <h1>Rendelések</h1>
-    
-    <table id="orderTable">
+    <table id="userTable">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Név</th>
+                <th>Felhasználónév</th>
                 <th>Email</th>
-                <th>Cím</th>
-                <th>Telefon</th>
-                <th>Fizetési mód</th>
-                <th>Összeg</th>
-                <th>Dátum</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr><td colspan="8">Betöltés...</td></tr>
+            <tr><td colspan="3">Betöltés...</td></tr>
         </tbody>
     </table>
     <p id="torlesstat"></p>
     <script>
-        async function fetchOrders() {
+        async function fetchUsers() {
             try {
-                const response = await fetch('orderback.php');
+                const response = await fetch('userback.php');
                 if (!response.ok) {
                     throw new Error(`Hálózati hiba: ${response.status}`);
                 }
 
                 const data = await response.json();
-                const tableBody = document.querySelector("#orderTable tbody");
+                const tableBody = document.querySelector("#userTable tbody");
                 tableBody.innerHTML = "";
 
                 if (data.length === 0) {
-                    tableBody.innerHTML = "<tr><td colspan='8'>Nincsenek rendelések</td></tr>";
+                    tableBody.innerHTML = "<tr><td colspan='3'>Nincsenek felhasználók</td></tr>";
                     return;
                 }
 
-                data.forEach(order => {
+                data.forEach(user => {
                     const row = document.createElement("tr");
                     row.innerHTML = `
-                        <td>${order.id}</td>
-                        <td>${order.name}</td>
-                        <td>${order.email}</td>
-                        <td>${order.address}</td>
-                        <td>${order.phone}</td>
-                        <td>${order.payment_method}</td>
-                        <td>${order.total_price} Ft</td>
-                        <td>${order.created_at}</td>
-                        <td><button onclick="torles(${order.id})">Törlés</button></td>
+                        <td>${user.id}</td>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td><button onclick="torles(${user.id})">Törlés</button></td>
                     `;
                     tableBody.appendChild(row);
                 });
 
             } catch (error) {
-                document.querySelector("#orderTable tbody").innerHTML = `<tr><td colspan="8">Hiba: ${error.message}</td></tr>`;
+                document.querySelector("#userTable tbody").innerHTML = `<tr><td colspan="3">Hiba: ${error.message}</td></tr>`;
             }
         }
 
-        function torles(orderId) {
+        function torles(userId) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("torlesstat").innerHTML = "Rendelés sikeresen törölve!!";
-                    fetchOrders(); 
+                    document.getElementById("torlesstat").innerHTML = "Felhasználó sikeresen törölve!!";
+                    fetchUsers(); 
                 }
             };
-            xhttp.open("POST", "deletorder.php", true);
+            xhttp.open("POST", "deleteuser.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("orderid=" + orderId);
+            xhttp.send("userid=" + userId);
         }
 
-        fetchOrders(); 
+        fetchUsers(); 
     </script>
 </body>
 </html>

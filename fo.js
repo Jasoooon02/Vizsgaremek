@@ -182,6 +182,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li id="admin-menu">Rendelések</li>
             `;
         }
+        if (isAdmin) {
+            menuItems += `
+                <li id="admin-menu1">Felhasználók</li>
+            `;
+        }
 
         menuItems += `</ul>`;
 
@@ -211,6 +216,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isAdmin) {
             document.getElementById("admin-menu").addEventListener("click", () => {
                 window.location.href = "rendelesek.html";
+            });
+        }
+        if (isAdmin) {
+            document.getElementById("admin-menu1").addEventListener("click", () => {
+                window.location.href = "users.html";
             });
         }
 
