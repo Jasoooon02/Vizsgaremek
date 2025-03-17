@@ -216,7 +216,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById("settings").addEventListener("click", () => {
             createModal(
-                `<h3>Beállítások</h3><p>Jelenleg nincs elérhető beállítás!</p>`
+                `<h3>Beállítások</h3>
+                <p id="info">Jelenleg nincs elérhető beállítás!</p>`
             );
         });
 
@@ -240,8 +241,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (data.success) {
                         createModal(`
                             <h3>Fiókinformáció</h3>
-                            <p>Felhasználónév: ${localStorage.getItem("username") || "N/A"}</p>
-                            <p>Email: ${data.email || "N/A"}</p>
+                            <p id="info">Felhasználónév: ${localStorage.getItem("username") || "N/A"}</p>
+                            <p id="info">Email: ${data.email || "N/A"}</p>
                         `);
                     } else {
                         alert("Hiba történt a fiók információinak lekérése során.");

@@ -1,5 +1,5 @@
 ::placeholder{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 body{
     background-color: #212121;
@@ -12,9 +12,9 @@ body{
     width: 450px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: rgba(24, 20, 20, 0.987);
+    background: rgba(255, 255, 255, 0.987);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(207, 207, 207, 0.6);
     border-radius: 10px;
   }
   
@@ -26,10 +26,10 @@ body{
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: #ff0000;
+    color: #000000;
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid #ff0000;
+    border-bottom: 1px solid #000000;
     outline: none;
     background: transparent;
   }
@@ -69,11 +69,9 @@ body{
   
   .login-box a:hover {
     
-    color: #1571c7;}
-    
+    color: #696969;
   
-  
-  
+  }
   
   .login-box a span:nth-child(1) {
     bottom: 2px;
@@ -88,8 +86,8 @@ body{
     position: relative;
     padding: 10px 24px;
     font-size: 18px;
-    color: #8f0000;
-    border: 2px solid #8f0000;
+    color: #000000;
+    border: 2px solid #000000;
     border-radius: 34px;
     background-color: transparent;
     font-weight: 600;
@@ -107,7 +105,7 @@ body{
     border-radius: inherit;
     scale: 0;
     z-index: -1;
-    background-color: #8f0000;
+    background-color: #696969;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
   }
   
@@ -310,7 +308,7 @@ body{
           display: inline;
           font-weight: bold;
           padding: 7px;
-          color:white;
+          color:rgb(0, 0, 0);
         }
         
         
@@ -337,17 +335,26 @@ body{
         .bold-text {
           font-weight: bold;
         }
-  @media only screen and (min-width: 1008px) {
+        @media only screen and (min-width: 1008px) {
           body {
            font-size: 18px;
           }
           main img {
             max-width: 400px;
           }
+          .modal-content {
+            background-color: #9b9898;
+            margin: 15% 20%;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            text-align: center;
+          }
+      
         }
     
         
-    @media only screen and (min-width: 641px) and (max-width: 1007px) {
+        @media only screen and (min-width: 641px) and (max-width: 1007px) {
           body {
             
             font-size: 16px;
@@ -362,8 +369,18 @@ body{
           main table {
             font-size: 14px;
           }
+
+          .modal-content {
+            background-color: #9b9898;
+            margin: 15% 20%;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            text-align: center;
+          }
         }
         @media only screen and (max-width: 510px) {
+          
           body {
             
             font-size: 14px;
@@ -376,7 +393,7 @@ body{
             padding: 40px;
             margin-top: 80px;;
             transform: translate(-50%, -50%);
-            background: rgba(24, 20, 20, 0.987);
+            background: rgba(255, 255, 255, 0.987);
             box-sizing: border-box;
             box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
             border-radius: 10px;
@@ -390,14 +407,22 @@ body{
             display: inline;
             font-weight: bold;
             padding: 7px;
-            color: white;
+            color: rgb(0, 0, 0);
           }
         .ham-menu{
           font-size: small;
         }
+        .modal-content {
+          background-color: #9b9898;
+          margin: 10% 10%;
+          padding: 20px;
+          border-radius: 5px;
+          width: 50%;
+          text-align: center;
+        }
         }
         
-    @media only screen and (max-width: 640px) {
+        @media only screen and (min-width: 511px) and (max-width: 640px) {
           body {
             
             font-size: 14px;
@@ -411,10 +436,18 @@ body{
             display: inline;
             font-weight: bold;
             padding: 7px;
-            color: white;
+            color: rgb(0, 0, 0);
           }
         .ham-menu{
           font-size: small;
+        }
+        .modal-content {
+          background-color: #9b9898;
+          margin: 15% 20%;
+          padding: 20px;
+          border-radius: 5px;
+          width: 50%;
+          text-align: center;
         }
         }
   
@@ -492,15 +525,7 @@ body{
           
         }
     
-        .modal-content {
-          background-color: #000000;
-          margin: 15% auto;
-          padding: 20px;
-          border-radius: 5px;
-          width: 50%;
-          text-align: center;
-        }
-    
+        
         .close {
           color: #aaa;
           float: right;
@@ -518,13 +543,15 @@ body{
         #forgot-password-link{
           font-size: 20px;
           margin-left: -5px;
+          
         }
+        
   
   
   
         #elfj{
           margin-bottom: 15px;
-          color: white;
+          color: rgb(0, 0, 0);
         }
   
   

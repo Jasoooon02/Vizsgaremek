@@ -920,3 +920,11 @@
     margin-top: 20px;
   }
   }
+
+
+  #info{
+    font-size: 20px;
+    color: var(--text-color);
+    font-weight: normal;
+    font-family: sans-serif;
+  }

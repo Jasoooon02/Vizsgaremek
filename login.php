@@ -12,15 +12,15 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $input_username = trim($_POST['username']);
+    $input_user = trim($_POST['user']); 
     $input_password = trim($_POST['password']);
 
-    if (empty($input_username) || empty($input_password)) {
-        echo "<script>alert('Felhasználónév és jelszó szükséges!'); window.location.href='index.html';</script>";
+    if (empty($input_user) || empty($input_password)) {
+        echo "<script>alert('Felhasználónév/E-mail és jelszó szükséges!'); window.location.href='index.html';</script>";
     } else {
         
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-        $stmt->bind_param("s", $input_username);
+        $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ? OR email = ?");
+        $stmt->bind_param("ss", $input_user, $input_user);
         $stmt->execute();
         $result = $stmt->get_result();
         
@@ -28,12 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             if (password_verify($input_password, $row['password'])) {
                 
-                $_SESSION['username'] = $input_username;
+                $_SESSION['username'] = $row['username'];
                 echo "
                     <script>
                         alert('Sikeresen bejelentkeztél!');
                         localStorage.setItem('isLoggedIn', 'true');
-                        localStorage.setItem('username', '" . $input_username . "');
+                        localStorage.setItem('username', '" . $row['username'] . "');
                         window.location.href = 'fo.html';
                     </script>";
                 exit();
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<script>alert('Helytelen jelszó!'); window.location.href='index.html';</script>";
             }
         } else {
-            echo "<script>alert('Nincs ilyen felhasználó!'); window.location.href='index.html';</script>";
+            echo "<script>alert('Nincs ilyen felhasználó vagy e-mail!'); window.location.href='index.html';</script>";
         }
     }
 }
