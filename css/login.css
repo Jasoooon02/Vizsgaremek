@@ -36,22 +36,16 @@ body{
   
   .login-box .user-box label {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -10px;
+    left: -15px;
     padding: 10px 0;
-    font-size: 16px;
+    font-size: 12px;
     color: #fff;
     pointer-events: none;
     transition: .5s;
   }
   
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
-    top: -9px;
-    left: 0;
-    color: #bdb8b8;
-    font-size: 12px;
-  }
+
   
   .login-box form a {
     position: relative;
@@ -339,6 +333,13 @@ body{
           body {
            font-size: 18px;
           }
+          .login-box .user-box input:focus ~ label,
+          .login-box .user-box input:valid ~ label {
+            top: -9px;
+            left: 0;
+            color: #bdb8b8;
+            font-size: 12px;
+          }
           main img {
             max-width: 400px;
           }
@@ -378,6 +379,7 @@ body{
             width: 50%;
             text-align: center;
           }
+         
         }
         @media only screen and (max-width: 510px) {
           
@@ -554,3 +556,20 @@ body{
           color: rgb(0, 0, 0);
         }
      
+
+        @media only screen and (min-height: 550px) and (max-height: 770px) {
+          .login-box {
+          position: absolute;
+          top: 70%;
+          left: 50%;
+          width: 400px;
+          padding: 40px;
+          transform: translate(-50%, -50%);
+          background: rgba(255, 255, 255, 0.987);
+          box-sizing: border-box;
+          box-shadow: 0 15px 25px rgba(207, 207, 207, 0.6);
+          border-radius: 10px;
+        }
+      }
+
+      
