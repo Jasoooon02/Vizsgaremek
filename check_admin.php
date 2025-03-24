@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Kapcsolódás
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 $conn->set_charset("utf8");
 
@@ -24,31 +24,31 @@ if ($conn->connect_error) {
     die(json_encode(['error' => 'Adatbázis kapcsolódási hiba']));
 }
 
-// Ellenőrzés, hogy a felhasználó be van-e jelentkezve
+
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     $felhasznalonev = $_SESSION['username'];
 
-    // SQL előkészítés
+
     $query = "SELECT is_admin FROM users WHERE username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $felhasznalonev);
     $stmt->execute();
 
-    // Eredmény feldolgozása
+
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         echo json_encode(['is_admin' => $row['is_admin']]);
     } else {
-        echo json_encode(['is_admin' => 0]); // Ha nincs ilyen felhasználó
+        echo json_encode(['is_admin' => 0]); 
     }
 
-    // Erőforrások felszabadítása
+
     $stmt->close();
 } else {
-    echo json_encode(['is_admin' => 0, 'error' => 'Nincs bejelentkezve']); // Ha nincs bejelentkezve
+    echo json_encode(['is_admin' => 0, 'error' => 'Nincs bejelentkezve']); 
 }
 
-// Kapcsolat lezárása
+
 $conn->close();
 ?>

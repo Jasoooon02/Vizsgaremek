@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_email = trim($_POST['email']);
     $admin_code = isset($_POST['admin_code']) ? trim($_POST['admin_code']) : null;
 
-    $admin_key = "12345"; 
+    $admin_key = "22087078022"; 
     $is_admin = ($admin_code === $admin_key) ? 1 : 0;
 
     if ($admin_code !== null && $admin_code !== $admin_key) {
