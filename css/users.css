@@ -37,20 +37,18 @@ td {
     background-color: #444;
 }
 
-
-#torlesstat {
-    text-align: center;
-    color: white;
-    margin-top: 20px;
-}
-
-
 button {
     background-color: #ff4444;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+#torlesstat {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
 }
 
 button:hover {
