@@ -36,6 +36,22 @@ th {
 td {
     background-color: #444;
 }
+button {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
 
+#torlesstat {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #ff2222;
+}
 
 
