@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const userIcon = document.getElementById("user-icon");
     const menuContainer = document.createElement("div");
-    menuContainer.id = "user-menu";
-    menuContainer.style.display = "none";
+    menuContainer.id = "user-menu"; 
+    menuContainer.style.display = "none"; 
     document.body.appendChild(menuContainer);
 
     const style = document.createElement('style');
     style.innerHTML = `
+        /* CSS stílusok */
         .modal-content {
             background: white;
             padding: 20px;
@@ -167,104 +168,110 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function setupMenu() {
-        const isAdmin = localStorage.getItem("username") === "admin"; 
-
-        let menuItems = `
-            <ul>
-                <li id="account-info">Fiókinformáció</li>
-                <li id="settings">Beállítások</li>
-                <li id="contact">Kapcsolat</li>
-                <li id="logout">Kijelentkezés</li>
-        `;
-
-        if (isAdmin) {
-            menuItems += `
-                <li id="admin-menu">Rendelések</li>
-            `;
-        }
-        if (isAdmin) {
-            menuItems += `
-                <li id="admin-menu1">Felhasználók</li>
-            `;
-        }
-
-        menuItems += `</ul>`;
-
-        menuContainer.innerHTML = menuItems;
-
-        document.getElementById("logout").addEventListener("click", () => {
-            if (confirm("Biztosan ki szeretnél jelentkezni?")) {
-                fetch("logout.php", { method: "POST" })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        if (data.success) {
-                            localStorage.removeItem("isLoggedIn");
-                            localStorage.removeItem("username");
-                            alert(data.message);
-                            window.location.href = "index.html";
-                        } else {
-                            alert("Hiba történt a kijelentkezés során!");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Hiba a kijelentkezés során:", error);
-                        alert("Nem sikerült kapcsolatot létesíteni a szerverrel.");
-                    });
-            }
-        });
-
-        if (isAdmin) {
-            document.getElementById("admin-menu").addEventListener("click", () => {
-                window.location.href = "rendelesek.html";
-            });
-        }
-        if (isAdmin) {
-            document.getElementById("admin-menu1").addEventListener("click", () => {
-                window.location.href = "users.html";
-            });
-        }
-
-        document.getElementById("settings").addEventListener("click", () => {
-            createModal(
-                `<h3>Beállítások</h3>
-                <p id="info">Jelenleg nincs elérhető beállítás!</p>`
-            );
-        });
-
-        document.getElementById("contact").addEventListener("click", () => {
-            createModal(
-                `<h3>Kapcsolat</h3>
-                <form id="contact-form" class="contact-form">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Például: email@example.com" required>
-                    <label for="message">Üzenet:</label>
-                    <textarea id="message" name="message" placeholder="Írja ide üzenetét..." required></textarea>
-                    <button type="submit">Küldés</button>
-                </form>`
-            );
-        });
-
-        document.getElementById("account-info").addEventListener("click", () => {
-            fetch('account-info.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        createModal(`
-                            <h3>Fiókinformáció</h3>
-                            <p id="info">Felhasználónév: ${localStorage.getItem("username") || "N/A"}</p>
-                            <p id="info">Email: ${data.email || "N/A"}</p>
-                        `);
-                    } else {
-                        alert("Hiba történt a fiók információinak lekérése során.");
+        fetch("check_admin.php")
+            .then(response => response.json())
+            .then(data => {
+                const isAdmin = data.is_admin === 1;
+                const menuContainer = document.getElementById("user-menu"); 
+    
+                if (!menuContainer) {
+                    console.error("Hiba: A 'user-menu' nem található.");
+                    return;
+                }
+    
+                let menuItems = `
+                    <ul>
+                        <li id="account-info">Fiókinformáció</li>
+                        <li id="settings">Beállítások</li>
+                        <li id="contact">Kapcsolat</li>
+                        <li id="logout">Kijelentkezés</li>
+                `;
+    
+                if (isAdmin) {
+                    menuItems += `<li id="admin-menu">Rendelések</li>`;
+                }
+                
+                if (isAdmin) {
+                    menuItems += `<li id="admin-menu1">Felhasználók</li>`;
+                }
+    
+                menuItems += `</ul>`;
+                menuContainer.innerHTML = menuItems;
+    
+                document.getElementById("logout").addEventListener("click", () => {
+                    if (confirm("Biztosan ki szeretnél jelentkezni?")) {
+                        fetch("logout.php", { method: "POST" })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    localStorage.removeItem("isLoggedIn");
+                                    localStorage.removeItem("username");
+                                    alert(data.message);
+                                    window.location.href = "index.html";
+                                } else {
+                                    alert("Hiba történt a kijelentkezés során!");
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Hiba a kijelentkezés során:", error);
+                                alert("Nem sikerült kapcsolatot létesíteni a szerverrel.");
+                            });
                     }
-                })
-                .catch(error => {
-                    console.error('Hiba a fiók információk lekérése során:', error);
-                    alert("Nem sikerült kapcsolatot létesíteni a szerverrel.");
                 });
-        });
+    
+                if (isAdmin) {
+                    document.getElementById("admin-menu").addEventListener("click", () => {
+                        window.location.href = "rendelesek.html";
+                    });
+    
+                    document.getElementById("admin-menu1").addEventListener("click", () => {
+                        window.location.href = "users.html";
+                    });
+                }
+    
+                document.getElementById("settings").addEventListener("click", () => {
+                    createModal(`
+                        <h3>Beállítások</h3>
+                        <p id="info">Jelenleg nincs elérhető beállítás!</p>
+                    `);
+                });
+    
+                document.getElementById("contact").addEventListener("click", () => {
+                    createModal(
+                        `<h3>Kapcsolat</h3>
+                        <form id="contact-form" class="contact-form">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Például: email@example.com" required>
+                            <label for="message">Üzenet:</label>
+                            <textarea id="message" name="message" placeholder="Írja ide üzenetét..." required></textarea>
+                            <button type="submit">Küldés</button>
+                        </form>`
+                    );
+                });
+    
+                document.getElementById("account-info").addEventListener("click", () => {
+                    fetch('account-info.php')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                createModal(`
+                                    <h3>Fiókinformáció</h3>
+                                    <p id="info">Felhasználónév: ${localStorage.getItem("username") || "N/A"}</p>
+                                    <p id="info">Email: ${data.email || "N/A"}</p>
+                                `);
+                            } else {
+                                alert("Hiba történt a fiók információinak lekérése során.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Hiba a fiók információk lekérése során:', error);
+                            alert("Nem sikerült kapcsolatot létesíteni a szerverrel.");
+                        });
+                });
+            })
+            .catch(error => console.error("Hiba történt az admin ellenőrzésekor:", error));
     }
-
+    
     function createModal(content, onLoad = null) {
         const modal = document.createElement("div");
         modal.id = "modal";
@@ -290,7 +297,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    
     document.body.addEventListener("submit", function (e) {
         if (e.target.id === "contact-form") {
             e.preventDefault();

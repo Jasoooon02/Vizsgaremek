@@ -3,15 +3,10 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
@@ -61,3 +56,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo 'Hiba: Nem megfelelő kérés';
 }
+?>

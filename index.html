@@ -63,6 +63,13 @@
         <div class="user-box">
             <input type="password" id="confirm-password" name="confirm_password" placeholder="Jelszó megerősítése" required>
         </div>
+        <div class="user-box">
+          <input type="checkbox" id="is-admin" name="is_admin">
+          <label for="is-admin" style="color:black">Admin fiók regisztráció</label>
+      </div>
+      <div class="user-box hidden" id="admin-code-box">
+          <input type="password" id="admin-code" name="admin_code" placeholder="Admin kód">
+      </div>
         <button type="submit" class="button">Regisztráció</button>
     </form>
   </div>
@@ -90,6 +97,15 @@
             event.preventDefault();
         }
     });
+     
+    document.addEventListener("DOMContentLoaded", function() {
+    let adminCodeBox = document.getElementById("admin-code-box");
+    let adminCheckbox = document.getElementById("is-admin");
+    adminCodeBox.style.display = "none";
+    adminCheckbox.addEventListener("change", function() {
+        adminCodeBox.style.display = this.checked ? "block" : "none";
+    });
+});
 
     const modal = document.getElementById("forgotPasswordModal");
     const btn = document.getElementById("forgot-password-link");
