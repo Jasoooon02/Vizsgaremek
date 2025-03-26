@@ -31,7 +31,6 @@ if ($json_data === false) {
     die(json_encode(["error" => "JSON hiba: " . json_last_error_msg()]));
 }
 
-
 echo $json_data;
 
 $conn->close();
