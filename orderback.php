@@ -35,19 +35,4 @@ try {
     error_log($e->getMessage());
     echo json_encode(["success" => false, "message" => "Hiba történt az adatbázis kapcsolat során."]);
 }
-
-$orders = [];
-while ($row = $result->fetch_assoc()) {
-    $orders[] = $row;
-}
-
-
-$json_data = json_encode($orders, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-if ($json_data === false) {
-    die(json_encode(["error" => "JSON hiba: " . json_last_error_msg()]));
-}
-
-echo $json_data;
-
-$conn->close();
 ?>
