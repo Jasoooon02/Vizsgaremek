@@ -22,11 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_confirm_password = trim($_POST['confirm_password']);
     $input_email = trim($_POST['email']);
     $admin_code = isset($_POST['admin_code']) ? trim($_POST['admin_code']) : null;
+    $is_admin = isset($_POST['is_admin']) ? 1 : 0;  
 
-    $admin_key = "22087078022"; 
-    $is_admin = ($admin_code === $admin_key) ? 1 : 0;
-
-    if ($admin_code !== null && $admin_code !== $admin_key) {
+    
+    if ($is_admin && $admin_code !== "22087078022") {
         echo "<script>alert('Hibás admin kód!'); window.location.href = 'index.html';</script>";
         exit();
     }
@@ -37,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Érvénytelen email cím!');</script>";
     } elseif ($input_password !== $input_confirm_password) {
         echo "<script>
-                alert('A jelszavak nem egyeznek!');
+                alert('A jelszavak nem egyeznek!'); 
                 setTimeout(function() {
                     window.location.href = 'index.html';
                 }, 1000);

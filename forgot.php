@@ -63,7 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
                 $mail->send();
     
-                header("Location: forgot_verify.html?email=$email");
+                
+                header("Location: forgot_verify.html?email=" . urlencode($email));
                 exit();
             } catch (Exception $e) {
                 echo "<script>alert('Hiba történt az email küldése során: {$mail->ErrorInfo}'); window.location.href='index.html';</script>";

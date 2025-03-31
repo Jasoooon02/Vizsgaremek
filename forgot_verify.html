@@ -12,7 +12,8 @@
   <div class="otp-box">
     <form action="verify_otp.php" method="POST">
       <div class="user-box">
-        <input type="email" name="email" placeholder="Írd be az email címed!"  required id="inp">
+        <!-- Az email cím lekérése a query paraméterből -->
+        <input type="email" name="email" id="inp" value="" readonly>
       </div>
       <div class="user-box">
         <input type="number" name="otp" placeholder="Egyszer használatos kód" required id="inp">
@@ -21,6 +22,16 @@
     </form>
   </div>
 
+  <script>
+    // Az email cím átadása a query paraméterből a form email mezőjébe
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const email = urlParams.get('email');
+      if (email) {
+        document.getElementById('inp').value = email;
+      }
+    });
+  </script>
+
 </body>
 </html>
-
