@@ -106,7 +106,8 @@ body{
   .button:hover::before {
     scale: 3;
   }
-  
+
+
   .button:hover {
     color: #212121;
     scale: 1.1;
