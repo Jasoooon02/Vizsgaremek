@@ -56,3 +56,98 @@ button {
 button:hover {
     background-color: #ff2222;
 }
+.back-button {
+    position: fixed;
+    left: 20px;
+    width: 100px;
+    top: 20px;
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: darkred;
+}
+
+.ready-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.ready-button:hover {
+    background-color: darkgreen;
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #orderTable th, #orderTable td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .back-button {
+        width: 80px;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .ready-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    #orderTable {
+        font-size: 14px;
+    }
+
+    #orderTable td, #orderTable th {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .back-button {
+        width: 70px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .ready-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    #orderTable th, #orderTable td {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #orderTable {
+        font-size: 12px;
+    }
+
+    .back-button {
+        left: 10px;
+        top: 10px;
+    }
+
+    .ready-button {
+        width: 100%;
+    }
+}

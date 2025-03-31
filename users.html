@@ -4,47 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Felhasználók</title>
-    <link rel="stylesheet" href="css/users.css"> 
-
-    <style>
-        
-        .back-button {
-            position: fixed;
-            left: 20px;
-            width: 100px;
-            top: 20px;
-            right: 20px;
-            background-color: red;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .back-button:hover {
-            background-color: darkred;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/users.css">
 </head>
 <body>
     <h1>Felhasználók</h1>
     <button class="back-button" onclick="window.location.href = 'fo.html';">Vissza</button>
+
     <table id="userTable">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Felhasználónév</th>
                 <th>Email</th>
-                <th></th>
+                <th>Admin</th>
+                <th>Adminná léptetés</th>
+                <th>Admin jog törlése</th>
+                <th>Törlés</th>
             </tr>
         </thead>
         <tbody>
-            <tr><td colspan="3">Betöltés...</td></tr>
+            <tr><td colspan="7">Betöltés...</td></tr>
         </tbody>
     </table>
+
     <p id="torlesstat"></p>
+
     <script>
         async function fetchUsers() {
             try {
@@ -58,7 +42,7 @@
                 tableBody.innerHTML = "";
 
                 if (data.length === 0) {
-                    tableBody.innerHTML = "<tr><td colspan='3'>Nincsenek felhasználók</td></tr>";
+                    tableBody.innerHTML = "<tr><td colspan='7'>Nincsenek felhasználók</td></tr>";
                     return;
                 }
 
@@ -68,30 +52,69 @@
                         <td>${user.id}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
-                        <td><button onclick="torles(${user.id})">Törlés</button></td>
+                        <td>${user.is_admin == 1 ? "✅ Admin" : "❌ Felhasználó"}</td>
+                        <td>
+                            ${user.is_admin == 0 
+                                ? `<button class="promote-btn" onclick="adminPromote(${user.id})">Adminná léptetés</button>` 
+                                : ""}
+                        </td>
+                        <td>
+                            ${user.is_admin == 1 
+                                ? `<button class="demote-btn" onclick="adminDelete(${user.id})">Admin jog törlése</button>` 
+                                : ""}
+                        </td>
+                        <td>
+                            <button class="delete-btn" onclick="torles(${user.id})">Törlés</button>
+                        </td>
                     `;
                     tableBody.appendChild(row);
                 });
 
             } catch (error) {
-                document.querySelector("#userTable tbody").innerHTML = `<tr><td colspan="3">Hiba: ${error.message}</td></tr>`;
+                document.querySelector("#userTable tbody").innerHTML = `<tr><td colspan="7">Hiba: ${error.message}</td></tr>`;
             }
         }
 
-        function torles(userId) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("torlesstat").innerHTML = "Felhasználó sikeresen törölve!!";
-                    fetchUsers(); 
-                }
-            };
-            xhttp.open("POST", "deleteuser.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("userid=" + userId);
+        function adminPromote(userId) {
+            fetch('adminpromote.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `userid=${userId}`
+            })
+            .then(response => response.text())
+            .then(() => {
+                document.getElementById("torlesstat").innerHTML = "Felhasználó admin lett!";
+                fetchUsers();
+            });
         }
 
-        fetchUsers(); 
+        function adminDelete(userId) {
+            fetch('admindelete.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `userid=${userId}`
+            })
+            .then(response => response.text())
+            .then(() => {
+                document.getElementById("torlesstat").innerHTML = "Admin jog törölve!";
+                fetchUsers();
+            });
+        }
+
+        function torles(userId) {
+            fetch('deleteuser.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `userid=${userId}`
+            })
+            .then(response => response.text())
+            .then(() => {
+                document.getElementById("torlesstat").innerHTML = "Felhasználó sikeresen törölve!";
+                fetchUsers();
+            });
+        }
+
+        fetchUsers();
     </script>
 </body>
 </html>

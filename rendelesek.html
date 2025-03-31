@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rendelések</title>
     <link rel="stylesheet" href="css/rendelesek.css"> 
-    <style>
-        
-        .back-button {
-            position: fixed;
-            left: 20px;
-            width: 100px;
-            top: 20px;
-            right: 20px;
-            background-color: red;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .back-button:hover {
-            background-color: darkred;
-        }
-    </style>
 </head>
 <body>
     <button class="back-button" onclick="window.location.href = 'fo.html';">Vissza</button>
@@ -43,11 +22,13 @@
                 <th>Fizetési mód</th>
                 <th>Összeg</th>
                 <th>Dátum</th>
+                <th>Státusz</th> 
                 <th></th>
+                <th></th> 
             </tr>
         </thead>
         <tbody>
-            <tr><td colspan="8">Betöltés...</td></tr>
+            <tr><td colspan="10">Betöltés...</td></tr>
         </tbody>
     </table>
     <p id="torlesstat"></p>
@@ -64,7 +45,7 @@
                 tableBody.innerHTML = "";
 
                 if (data.length === 0) {
-                    tableBody.innerHTML = "<tr><td colspan='8'>Nincsenek rendelések</td></tr>";
+                    tableBody.innerHTML = "<tr><td colspan='10'>Nincsenek rendelések</td></tr>";
                     return;
                 }
 
@@ -79,13 +60,17 @@
                         <td>${order.payment_method}</td>
                         <td>${order.total_price} Ft</td>
                         <td>${order.created_at}</td>
+                        <td>${order.status || "Feldolgozás alatt"}</td>
                         <td><button onclick="torles(${order.id})">Törlés</button></td>
+                        <td>
+                            ${order.status === 'Kész' ? '' : `<button class="ready-button" onclick="markAsReady(${order.id}, '${order.email}')">Rendelés kész</button>`}
+                        </td>
                     `;
                     tableBody.appendChild(row);
                 });
 
             } catch (error) {
-                document.querySelector("#orderTable tbody").innerHTML = `<tr><td colspan="8">Hiba: ${error.message}</td></tr>`;
+                document.querySelector("#orderTable tbody").innerHTML = `<tr><td colspan="10">Hiba: ${error.message}</td></tr>`;
             }
         }
 
@@ -100,6 +85,19 @@
             xhttp.open("POST", "deletorder.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("orderid=" + orderId);
+        }
+
+        function markAsReady(orderId, email) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("torlesstat").innerHTML = "Rendelés kész státuszba állítva!";
+                    fetchOrders();
+                }
+            };
+            xhttp.open("POST", "orderready.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("orderid=" + orderId + "&email=" + email);
         }
 
         fetchOrders(); 

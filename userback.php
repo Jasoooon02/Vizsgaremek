@@ -13,7 +13,8 @@ if ($conn->connect_error) {
     die(json_encode(["error" => "Kapcsolati hiba: " . $conn->connect_error]));
 }
 
-$sql = "SELECT id, username, email FROM users"; 
+
+$sql = "SELECT id, username, email, is_admin FROM users"; 
 $result = $conn->query($sql);
 
 if (!$result) {
@@ -22,6 +23,7 @@ if (!$result) {
 
 $users = [];
 while ($row = $result->fetch_assoc()) {
+    $row["is_admin"] = (int) $row["is_admin"];
     $users[] = $row;
 }
 
@@ -31,6 +33,5 @@ if ($json_data === false) {
 }
 
 echo $json_data;
-
 $conn->close();
 ?>

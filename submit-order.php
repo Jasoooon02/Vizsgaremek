@@ -27,9 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $payment_method = $_POST['payment-method'];
     $total_price = $_POST['total_price'];
 
+   
+    $status = 'Feldolgozás alatt';
 
-    $sql = "INSERT INTO orders (name, email, address, phone, payment_method, total_price) 
-            VALUES ('$name', '$email', '$address', '$phone', '$payment_method', '$total_price')";
+
+    $delivery_date = date('Y-m-d', strtotime('+7 days'));
+
+    $sql = "INSERT INTO orders (name, email, address, phone, payment_method, total_price, status) 
+            VALUES ('$name', '$email', '$address', '$phone', '$payment_method', '$total_price', '$status')";
 
     if ($conn->query($sql) === TRUE) {
         $order_id = $conn->insert_id;
@@ -57,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Kedves $name!\n\nKöszönjük a rendelését!\n\n" . 
                    "A rendelés részletei:\n$order_details\n\n" . 
                    "A megrendelését sikeresen rögzítettük, és hamarosan feldolgozzuk.\n\n" . 
+                   "A szállítást várhatóan $delivery_date napján végezzük el.\n\n" . 
                    "Üdvözlettel,\nA DemonCars csapata";
 
         $mail = new PHPMailer(true);

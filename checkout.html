@@ -82,7 +82,7 @@
             <input type="text" id="name" name="name" required><br><br>
 
             <label for="email">Email cím:</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <input type="email" id="email" name="email" required readonly><br><br> 
 
             <label for="address">Szállítási cím:</label>
             <input type="text" id="address" name="address" required><br><br>
@@ -104,7 +104,6 @@
         </form>
     </div>
 
-   
     <div id="cardModal" class="modal">
         <div class="modal-content">
             <span id="closeModal" class="close">&times;</span>
@@ -112,40 +111,43 @@
         </div>
     </div>
 
+    <script>
+        
+        fetch('account-info.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.email) {
+                    document.getElementById('email').value = data.email; 
+                }
+            })
+            .catch(error => console.error('Hiba az email lekérésekor:', error));
 
-      <script>
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const totalPrice = cartItems.reduce((acc, item) => acc + parseInt(item.price, 10), 0);
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const totalPrice = cartItems.reduce((acc, item) => acc + parseInt(item.price, 10), 0);
 
-    document.getElementById('cart-items').value = JSON.stringify(cartItems);
-    document.getElementById('total-price-field').value = totalPrice;
+        document.getElementById('cart-items').value = JSON.stringify(cartItems);
+        document.getElementById('total-price-field').value = totalPrice;
 
-    var modal = document.getElementById("cardModal");
-    var closeModal = document.getElementById("closeModal");
+        var modal = document.getElementById("cardModal");
+        var closeModal = document.getElementById("closeModal");
 
-   
-    modal.style.display = "none";
+        modal.style.display = "none";
 
-   
-    document.getElementById('payment-method').addEventListener('change', function () {
-        if (this.value === 'kártya') {
-            modal.style.display = "block";
+        document.getElementById('payment-method').addEventListener('change', function () {
+            if (this.value === 'kártya') {
+                modal.style.display = "block";
+            }
+        });
+
+        closeModal.onclick = function () {
+            modal.style.display = "none"; 
         }
-    });
 
-    
-    closeModal.onclick = function () {
-        modal.style.display = "none"; 
-    }
-
-    
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
-    }
-</script>
-
-  
+    </script>
 </body>
 </html>
