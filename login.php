@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Felhasználónév/E-mail és jelszó szükséges!'); window.location.href='index.html';</script>";
     } else {
         
-        $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ? OR email = ?");
+        $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
         $stmt->bind_param("ss", $input_user, $input_user);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($input_password, $row['password'])) {
                 
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['user_id'] = $row['id'];
                 echo "
                     <script>
                         alert('Sikeresen bejelentkeztél!');

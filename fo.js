@@ -7,7 +7,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const style = document.createElement('style');
     style.innerHTML = `
-        /* CSS stílusok */
+        #password-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color:black;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        #password-form label {
+            font-size: 16px;
+            color: red;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        #password-form input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #8f0000;
+            background: transparent;
+            border: 1px solid #8f0000;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        #password-form input::placeholder {
+            color: #aaa;
+        }
+
+        #password-form #passbutton {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #8f0000;
+            border: none;
+            width:250px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #password-form #passbutton:hover {
+            background-color: #b00000;
+        }
+
+        #current-password-label,
+        #new-password-label,
+        #confirm-new-password-label {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        #current-password,
+        #new-password,
+        #confirm-new-password {
+            padding: 12px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #8f0000;
+        }
+
         .modal-content {
             background: white;
             padding: 20px;
@@ -17,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
             position: relative;
             height: 500px;
         }
-        
-        .contact-form {
+
+        .contact-form, .password-form {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -38,16 +106,17 @@ document.addEventListener("DOMContentLoaded", function () {
             gap: 15px;
         }
         
-        .contact-form label {
+        .contact-form label, .password-form label {
             font-size: 16px;
             color: #8f0000;
             font-weight: 600;
             margin-bottom: 10px;
             display: block;
         }
-        
+
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .password-form input {
             width: 100%;
             padding: 10px 0;
             font-size: 16px;
@@ -60,7 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
         .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
+        .contact-form textarea::placeholder,
+        .password-form input::placeholder {
             color: #ffffff;
         }
         
@@ -69,7 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
             min-height: 100px;
         }
         
-        .contact-form button {
+        .contact-form button,
+        .password-form button {
             cursor: pointer;
             position: relative;
             padding: 10px 24px;
@@ -86,7 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
             height:40px;
         }
         
-        .contact-form button::before {
+        .contact-form button::before,
+        .password-form button::before {
             content: '';
             position: absolute;
             inset: 0;
@@ -100,17 +172,20 @@ document.addEventListener("DOMContentLoaded", function () {
             transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
         }
         
-        .contact-form button:hover::before {
+        .contact-form button:hover::before,
+        .password-form button:hover::before {
             scale: 3;
         }
         
-        .contact-form button:hover {
+        .contact-form button:hover,
+        .password-form button:hover {
             color: #212121;
             scale: 1.1;
             box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
         }
-        
-        .contact-form button:active {
+
+        .contact-form button:active,
+        .password-form button:active {
             scale: 1;
         }
         
@@ -118,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
             color: #ffffff;
             margin-bottom: 20px;
         }
-        
+
         .error {
             color: red;
             font-weight: bold;
@@ -130,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         @media (min-width: 768px) {
-            .contact-form {
+            .contact-form, .password-form {
                 width: 300px;
                 height: 550px;
                 padding: 30px;
@@ -138,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         @media (min-width: 1024px) {
-            .contact-form {
+            .contact-form, .password-form {
                 width: 450px;
                 height: 600px;
             }
@@ -179,19 +254,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
     
-                let menuItems = `
-                    <ul>
-                        <li id="account-info">Fiókinformáció</li>
-                        <li id="settings">Beállítások</li>
-                        <li id="contact">Kapcsolat</li>
-                        <li id="logout">Kijelentkezés</li>
+                let menuItems = ` <ul>
+                    <li id="account-info">Fiókinformáció</li>
+                    <li id="settings">Beállítások</li>
+                    <li id="contact">Kapcsolat</li>
+                    <li id="logout">Kijelentkezés</li>
                 `;
     
                 if (isAdmin) {
                     menuItems += `<li id="admin-menu">Rendelések</li>`;
-                }
-                
-                if (isAdmin) {
                     menuItems += `<li id="admin-menu1">Felhasználók</li>`;
                 }
     
@@ -232,10 +303,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("settings").addEventListener("click", () => {
                     createModal(`
                         <h3>Beállítások</h3>
-                        <p id="info">Jelenleg nincs elérhető beállítás!</p>
+                        <form id="password-form" class="password-form">
+                            <label for="current-password" id="current-password-label">Jelenlegi jelszó:</label>
+                            <input type="password" id="current-password" name="current-password" placeholder="Adja meg a jelenlegi jelszót" required>
+
+                            <label for="new-password" id="new-password-label">Új jelszó:</label>
+                            <input type="password" id="new-password" name="new-password" placeholder="Adja meg az új jelszót" required>
+
+                            <label for="confirm-new-password" id="confirm-new-password-label">Új jelszó megerősítése:</label>
+                            <input type="password" id="confirm-new-password" name="confirm-new-password" placeholder="Erősítse meg az új jelszót" required>
+
+                            <button type="submit" id="passbutton">Jelszó módosítása</button>
+                        </form>
+
                     `);
                 });
-    
+
                 document.getElementById("contact").addEventListener("click", () => {
                     createModal(
                         `<h3>Kapcsolat</h3>
@@ -298,27 +381,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.body.addEventListener("submit", function (e) {
-        if (e.target.id === "contact-form") {
+        if (e.target.id === "password-form") {
             e.preventDefault();
 
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value;
+            const currentPassword = document.getElementById("current-password").value;
+            const newPassword = document.getElementById("new-password").value;
+            const confirmNewPassword = document.getElementById("confirm-new-password").value;
 
-            
-            fetch("send-email.php", {
+            if (newPassword !== confirmNewPassword) {
+                alert("Az új jelszavak nem egyeznek!");
+                return;
+            }
+
+            fetch("change-password.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: `email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`
+                body: `currentPassword=${encodeURIComponent(currentPassword)}&newPassword=${encodeURIComponent(newPassword)}`
             })
             .then(response => response.text())
             .then(data => {
                 if (data === 'success') {
-                    alert("Az üzenet sikeresen elküldve!");
-                    closeModal(); 
+                    alert("A jelszó sikeresen megváltozott!");
+                    closeModal();
                 } else {
-                    alert("Hiba történt az üzenet küldésekor: " + data);
+                    alert("Hiba történt a jelszó módosításakor: " + data);
                 }
             })
             .catch(error => {

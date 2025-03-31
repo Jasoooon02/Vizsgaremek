@@ -12,7 +12,7 @@
   <div class="otp-box">
     <form action="verify_otp.php" method="POST">
       <div class="user-box">
-        <!-- Az email cím lekérése a query paraméterből -->
+       
         <input type="email" name="email" id="inp" value="" readonly>
       </div>
       <div class="user-box">
@@ -23,7 +23,7 @@
   </div>
 
   <script>
-    // Az email cím átadása a query paraméterből a form email mezőjébe
+    
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
       const email = urlParams.get('email');
