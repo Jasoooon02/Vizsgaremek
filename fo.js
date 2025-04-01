@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
                 let menuItems = ` <ul>
                     <li id="account-info">Fiókinformáció</li>
-                    <li id="settings">Beállítások</li>
+                    <li id="settings">Jelszó változtatás</li>
                     <li id="contact">Kapcsolat</li>
                     <li id="logout">Kijelentkezés</li>
                 `;
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
                 document.getElementById("settings").addEventListener("click", () => {
                     createModal(`
-                        <h3>Beállítások</h3>
+                        <h3>Jelszó megváltoztatás</h3>
                         <form id="password-form" class="password-form">
                             <label for="current-password" id="current-password-label">Jelenlegi jelszó:</label>
                             <input type="password" id="current-password" name="current-password" placeholder="Adja meg a jelenlegi jelszót" required>

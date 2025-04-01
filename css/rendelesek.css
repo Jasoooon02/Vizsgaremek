@@ -151,3 +151,102 @@ button:hover {
         width: 100%;
     }
 }
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button {
+    position: fixed;
+    left: 20px;
+    width: 100px;
+    top: 20px;
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: darkred;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+}
+
+td {
+    background-color: #444;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.promote-btn {
+    background-color: green;
+}
+
+.demote-btn {
+    background-color: orange;
+}
+
+.delete-btn {
+    background-color: red;
+}
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    tr {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
+
+    td {
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td::before {
+        position: absolute;
+        left: 10px;
+        content: attr(data-label);
+        font-weight: bold;
+        text-align: left;
+    }
+}

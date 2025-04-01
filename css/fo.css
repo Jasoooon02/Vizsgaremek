@@ -19,7 +19,7 @@
     padding: 2px;
     border: 1px solid #ccc;
     margin-top: -140px;
-    margin-right: 40px;
+    margin-right: 20px;
   }
 ::placeholder {
     color: #ffffff;
@@ -728,7 +728,7 @@
             width: 30px;
             height: 30px;
             margin-right: 10px;
-            margin-top: -50px;
+            margin-top: -40px;
         }
     }
 
@@ -768,7 +768,7 @@
     #user-menu {
         position: absolute;
         top: 50px;
-        right: 10px;
+        right: 35px;
         background: white;
         border: 1px solid #ccc;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -785,6 +785,7 @@
     #user-menu ul li {
         padding: 5px 10px;
         cursor: pointer;
+        font-size: 12px;
     }
     
     #user-menu ul li:hover {
