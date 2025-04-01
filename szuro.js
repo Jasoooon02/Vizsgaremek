@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     function updateCarDisplay() {
         const minPrice = parseInt(minPriceInput.value) || 0;
-        const maxPrice = parseInt(maxPriceInput.value) || Infinity;
+        const maxPrice = parseInt(maxPriceInput.value) || 10000000000;
 
         cars.forEach(car => {
             const carCategory = car.getAttribute('data-category');

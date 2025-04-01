@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     localStorage.removeItem("isLoggedIn");
                                     localStorage.removeItem("username");
                                     alert(data.message);
-                                    window.location.href = "login.html";
+                                    window.location.href = "index.html";
                                 } else {
                                     alert("Hiba történt a kijelentkezés során!");
                                 }

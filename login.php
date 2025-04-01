@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<script>alert('Helytelen jelszó!'); window.location.href='login.html';</script>";
             }
         } else {
+            http_response_code(401);
             echo "<script>alert('Nincs ilyen felhasználó vagy e-mail!'); window.location.href='login.html';</script>";
         }
     }
