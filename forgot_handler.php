@@ -20,12 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST['action'];
 
     if (empty($email)) {
-        echo "<script>alert('Az email megadása kötelező!'); window.location.href='index.html';</script>";
+        echo "<script>alert('Az email megadása kötelező!'); window.location.href='login.html';</script>";
         exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<script>alert('Érvénytelen email cím!'); window.location.href='index.html';</script>";
+        echo "<script>alert('Érvénytelen email cím!'); window.location.href='login.html';</script>";
         exit();
     }
 
@@ -59,12 +59,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $mail->send();
                 echo "<script>alert('A felhasználónév sikeresen elküldve az e-mail címére.');</script>";
-                echo "<script>setTimeout(function() { window.location.href = 'index.html'; }, 100);</script>";
+                echo "<script>setTimeout(function() { window.location.href = 'login.html'; }, 100);</script>";
             } catch (Exception $e) {
-                echo "<script>alert('Hiba történt az email küldése során: {$mail->ErrorInfo}'); window.location.href='index.html';</script>";
+                echo "<script>alert('Hiba történt az email küldése során: {$mail->ErrorInfo}'); window.location.href='login.html';</script>";
             }
         } else {
-            echo "<script>alert('Ez az email cím nincs regisztrálva!'); window.location.href='index.html';</script>";
+            echo "<script>alert('Ez az email cím nincs regisztrálva!'); window.location.href='login.html';</script>";
         }
     }
 }

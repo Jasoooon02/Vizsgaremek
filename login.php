@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_password = trim($_POST['password']);
 
     if (empty($input_user) || empty($input_password)) {
-        echo "<script>alert('Felhasználónév/E-mail és jelszó szükséges!'); window.location.href='index.html';</script>";
+        echo "<script>alert('Felhasználónév/E-mail és jelszó szükséges!'); window.location.href='login.html';</script>";
     } else {
         
         $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
@@ -35,14 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         alert('Sikeresen bejelentkeztél!');
                         localStorage.setItem('isLoggedIn', 'true');
                         localStorage.setItem('username', '" . $row['username'] . "');
-                        window.location.href = 'fo.html';
+                        window.location.href = 'index.html';
                     </script>";
                 exit();
             } else {
-                echo "<script>alert('Helytelen jelszó!'); window.location.href='index.html';</script>";
+                echo "<script>alert('Helytelen jelszó!'); window.location.href='login.html';</script>";
             }
         } else {
-            echo "<script>alert('Nincs ilyen felhasználó vagy e-mail!'); window.location.href='index.html';</script>";
+            echo "<script>alert('Nincs ilyen felhasználó vagy e-mail!'); window.location.href='login.html';</script>";
         }
     }
 }

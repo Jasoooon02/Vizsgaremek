@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             
-            header("Location: index.html");
+            header("Location: login.html");
             exit();
         } else {
             echo "Hiba történt a jelszó frissítésekor!";

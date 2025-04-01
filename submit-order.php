@@ -144,7 +144,7 @@ $conn->close();
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("success-check").style.display = "flex";
             setTimeout(function() {
-                window.location.href = 'fo.html';
+                window.location.href = 'index.html';
             }, 8000);
         });
     </script>

@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
     if ($is_admin && $admin_code !== "22087078022") {
-        echo "<script>alert('Hibás admin kód!'); window.location.href = 'index.html';</script>";
+        echo "<script>alert('Hibás admin kód!'); window.location.href = 'login.html';</script>";
         exit();
     }
 
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>
                 alert('A jelszavak nem egyeznek!'); 
                 setTimeout(function() {
-                    window.location.href = 'index.html';
+                    window.location.href = 'login.html';
                 }, 1000);
               </script>";
     } else {
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            echo "<script>alert('A felhasználónév vagy az email már használatban van!'); window.location.href = 'index.html';</script>";
+            echo "<script>alert('A felhasználónév vagy az email már használatban van!'); window.location.href = 'login.html';</script>";
         } else {
             $stmt = $conn->prepare("INSERT INTO users (username, password, email, is_admin) VALUES (?, ?, ?, ?)");
             $hashed_password = password_hash($input_password, PASSWORD_DEFAULT);
@@ -79,9 +79,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->Body = $message;
                     
                     $mail->send();
-                    echo "<script>alert('Sikeres regisztráció! Ellenőrizze az emailjeit.'); window.location.href = 'index.html';</script>";
+                    echo "<script>alert('Sikeres regisztráció! Ellenőrizze az emailjeit.'); window.location.href = 'login.html';</script>";
                 } catch (Exception $e) {
-                    echo "<script>alert('Sikeres regisztráció, de az email küldése sikertelen volt: {$mail->ErrorInfo}'); window.location.href = 'index.html';</script>";
+                    echo "<script>alert('Sikeres regisztráció, de az email küldése sikertelen volt: {$mail->ErrorInfo}'); window.location.href = 'login.html';</script>";
                 }
                 exit();
             } else {

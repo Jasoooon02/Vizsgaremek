@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
             menuContainer.style.display =
                 menuContainer.style.display === "block" ? "none" : "block";
         } else {
-            window.location.href = "index.html";
+            window.location.href = "login.html";
         }
     }
 
@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     localStorage.removeItem("isLoggedIn");
                                     localStorage.removeItem("username");
                                     alert(data.message);
-                                    window.location.href = "index.html";
+                                    window.location.href = "login.html";
                                 } else {
                                     alert("Hiba történt a kijelentkezés során!");
                                 }

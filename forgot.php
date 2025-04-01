@@ -21,12 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST['action'];
 
     if (empty($email)) {
-        echo "<script>alert('Az email megadása kötelező!'); window.location.href='index.html';</script>";
+        echo "<script>alert('Az email megadása kötelező!'); window.location.href='login.html';</script>";
         exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<script>alert('Érvénytelen email cím!'); window.location.href='index.html';</script>";
+        echo "<script>alert('Érvénytelen email cím!'); window.location.href='login.html';</script>";
         exit();
     }
 
@@ -67,10 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: forgot_verify.html?email=" . urlencode($email));
                 exit();
             } catch (Exception $e) {
-                echo "<script>alert('Hiba történt az email küldése során: {$mail->ErrorInfo}'); window.location.href='index.html';</script>";
+                echo "<script>alert('Hiba történt az email küldése során: {$mail->ErrorInfo}'); window.location.href='login.html';</script>";
             }
         } else {
-            echo "<script>alert('Ez az email cím vagy felhasználónév nincs regisztrálva vagy nem helyesen van megadva!'); window.location.href='index.html';</script>";
+            echo "<script>alert('Ez az email cím vagy felhasználónév nincs regisztrálva vagy nem helyesen van megadva!'); window.location.href='login.html';</script>";
         }
     }
 }
