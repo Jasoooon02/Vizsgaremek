@@ -466,36 +466,4 @@ body{
         text-align: center;
       }
   
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-  
-      .close:hover {
-        color: black;
-      }
-      
-
-
-      #forgot-password-link{
-        font-size: 20px;
-        margin-left: -5px;
-      }
-
-
-
-      #elfj{
-        margin-bottom: 15px;
-      }
-
-      .logo{
-        width: 160px;
-        height: 80px;
-        margin-left: -95px;
-        margin-right: -45px;
-        margin-bottom: -5px;
-      }
      
