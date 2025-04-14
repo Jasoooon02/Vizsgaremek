@@ -466,7 +466,8 @@ body{
         text-align: center;
       }
   
-      .close {
+     
+    .close {
         color: #aaa;
         float: right;
         font-size: 28px;
