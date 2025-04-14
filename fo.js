@@ -416,7 +416,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    userIcon.addEventListener("click", toggleMenu);
-    setupMenu();
-    updateIcon();
+    
 });
